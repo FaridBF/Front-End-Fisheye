@@ -1,45 +1,32 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+// la class qui va instancier l'objet
+class Index {
+  constructor() {
+    this.photographersSection = document.querySelector(".photographer_section");
+    // on va instancier le class PhotographersApi
+    this.photographersApi = new PhotographersApi("./data/photographers.json");
+  }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+  async init() {
+    const photographersData = await this.photographersApi.getPhotographers();
+    // console.log(photographersData);
+    const photographersArray = photographersData.photographers.map(
+      (photographer) => new photographerFactory(photographer)
+    );
+    // console.log(photographersArray);
+    console.log("photographersData", photographersData);
+    photographersData.photographers.forEach((photographer) => {
+      const photographerModel = photographerFactory(photographer);
+      console.log("photographer", photographer);
+      // const userCardDOM = photographerModel.UserCardDOM();
+      // permet d'instancier la class PhotographersCard
+      const Template = new PhotographersCard(photographer);
+      this.photographersSection.appendChild(Template.userCardDOM);
+    });
+  }
+}
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+const index = new Index();
+index.init();
+//       const { photographers } = await getPhotographers();
+//       displayData(photographers);
+//     }
