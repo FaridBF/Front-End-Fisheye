@@ -9,18 +9,20 @@ class Index {
   async init() {
     const photographersData = await this.photographersApi.getPhotographers();
     // console.log(photographersData);
-    const photographersArray = photographersData.photographers.map(
-      (photographer) => new photographerFactory(photographer)
-    );
+    // const photographersArray = photographersData.photographers.map(
+    //   (photographer) => new photographerFactory(photographer)
+    // );
     // console.log(photographersArray);
     console.log("photographersData", photographersData);
     photographersData.photographers.forEach((photographer) => {
       const photographerModel = photographerFactory(photographer);
-      console.log("photographer", photographer);
-      // const userCardDOM = photographerModel.UserCardDOM();
+      console.log("photographerModel", photographerModel);
       // permet d'instancier la class PhotographersCard
-      const Template = new PhotographersCard(photographer);
-      this.photographersSection.appendChild(Template.userCardDOM);
+      const photographerCard = new PhotographerCard(photographerModel);
+      console.log(photographerCard);
+      const userCardDOM = photographerCard.userCardDOM();
+      console.log(userCardDOM);
+      this.photographersSection.appendChild(userCardDOM);
     });
   }
 }

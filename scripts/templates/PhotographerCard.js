@@ -1,6 +1,7 @@
 // permet de retourner le template ou la vue
 // son rôle est d'afficher les informations
-class PhotographersCard {
+class PhotographerCard {
+  // reprend les attribut de Photographer
   constructor(photographer) {
     this._photographer = photographer;
   }
@@ -14,11 +15,11 @@ class PhotographersCard {
     article.appendChild(h2);
 
     const userCardDOM = `
-    <img
-    alt="${this._photographer.name}"
-    src="${this._photographer.portrait}"
-    >
-    <h2>${this._photographer.name}<h2/>
+      <img
+        alt="${this._photographer.name}"
+        src="${this._photographer.portrait}"
+      >
+      <h2>${this._photographer.name}<h2/>
     `;
 
     article.innerHTML = userCardDOM;

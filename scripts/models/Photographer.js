@@ -6,7 +6,7 @@ class Photographer {
     this._location = data.city + ", " + data.country;
     this._tagline = data.tagline;
     this._price = data.price;
-    this._portrait = data.portrait;
+    this._portrait = `./assets/photographers/${data.portrait}`;
   }
   // j'ajoute des getters afin d'accéder aux propriétés de mon objet
   get name() {
@@ -31,6 +31,6 @@ class Photographer {
 
   get portrait() {
     // retourner le chemin de l'image: correspond à celle présente dans les assets en local
-    return `/assets/photographers/${this._portrait}`;
+    return this._portrait;
   }
 }
