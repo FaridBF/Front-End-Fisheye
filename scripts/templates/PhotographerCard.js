@@ -13,6 +13,7 @@ class PhotographerCard {
     // const p = document.createElement("p");
     // const span = document.createElement("span");
 
+    const a = document.getElementById("photographer_id");
     // article.appendChild(img);
     // article.appendChild(div);
 
@@ -22,11 +23,13 @@ class PhotographerCard {
 
     // comment éviter l'aspect redondant ici
     const userCardDOM = `
+    <a href="http://127.0.0.1:5500/photographer.html?id=${this._photographer._id}" id="photographer_id" class="photographer_id">
       <img 
         class="img_profil"
         alt=${this._photographer.name}
         src=${this._photographer.portrait}
       >
+    </a>
         <h2 
         > ${this._photographer.name}<h2/>
         <p>${this._photographer.location}<p/>

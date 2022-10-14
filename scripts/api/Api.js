@@ -21,4 +21,17 @@ class PhotographersApi extends Api {
   async getPhotographers() {
     return await this.get();
   }
+  // pour un seul photographe récupéré via l'id
+  async getPhotographer(photographerId) {
+    console.log(photographerId);
+    // récup tableau des photographes
+    const data = await this.get();
+    // console.log(data);
+    //récup uniquement de l'objet via l'ID
+    const result = data.photographers.filter((photographer) => {
+      return photographer.id == parseInt(photographerId);
+    });
+    // console.log(result);
+    return result;
+  }
 }

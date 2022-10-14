@@ -8,11 +8,6 @@ class Index {
 
   async init() {
     const photographersData = await this.photographersApi.getPhotographers();
-    // console.log(photographersData);
-    // const photographersArray = photographersData.photographers.map(
-    //   (photographer) => new photographerFactory(photographer)
-    // );
-    // console.log(photographersArray);
     console.log("photographersData", photographersData);
     photographersData.photographers.forEach((photographer) => {
       const photographerModel = photographerFactory(photographer);
@@ -29,6 +24,3 @@ class Index {
 
 const index = new Index();
 index.init();
-//       const { photographers } = await getPhotographers();
-//       displayData(photographers);
-//     }
