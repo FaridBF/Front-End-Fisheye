@@ -17,6 +17,7 @@
     <div class="photograph-header">
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
+    <div class="media-card-container"></div>
   </main>
   <div id="contact_modal">
     <div class="modal">
@@ -29,18 +30,37 @@
           <label>Prénom</label>
           <input />
         </div>
+        <div>
+          <label>Nom</label>
+          <input />
+        </div>
+        <div>
+          <label>Email</label>
+          <input />
+        </div>
+        <div>
+          <label for="
+          your_message">Votre message</label>
+          <textarea class="your_message" id="your_message" name="your_message" rows="5" cols="33">
+          </textarea>
+        </div>
         <button class="contact_button">Envoyer</button>
       </form>
     </div>
   </div>
-  <!-- Factory -->
+  <!-- Factories -->
   <script src="./scripts/factories/photographer.js"></script>
+  <script src="./scripts/factories/media.js"></script>
+
 
   <!-- Models -->
   <script src="scripts/models/PhotographerModel.js"></script>
+  <script src="scripts/models/ImageModel.js"></script>
+  <script src="scripts/models/VideoModel.js"></script>
 
   <!-- Templates -->
   <script src="./scripts/templates/PhotographerCard.js"></script>
+  <script src="./scripts/templates/PhotographerMediaCard.js"></script>
 
   <!-- Api -->
   <script src="./scripts/api/Api.js"></script>

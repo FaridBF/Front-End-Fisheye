@@ -4,7 +4,7 @@ class PhotographerCard {
   // reprend les attribut de Photographer
   constructor(photographer) {
     this._photographer = photographer;
-    console.log("ici photographercard", photographer);
+    // console.log("ici photographercard", photographer);
   }
   userCardDOM() {
     const article = document.createElement("article");
@@ -18,9 +18,9 @@ class PhotographerCard {
         src=${this._photographer.portrait}
       >
     </a>
-        <p>${this._photographer.location}<p/>
-        <p>${this._photographer.tagline}<p/>
-        <span>${this._photographer.price}/jour<span/>
+        <p>${this._photographer.location}</p>
+        <p>${this._photographer.tagline}</p>
+        <span>${this._photographer.price}/jour</span>
     `;
 
     article.innerHTML = userCardDOM;
