@@ -4,23 +4,11 @@ class PhotographerCard {
   // reprend les attribut de Photographer
   constructor(photographer) {
     this._photographer = photographer;
+    console.log("ici photographercard", photographer);
   }
   userCardDOM() {
     const article = document.createElement("article");
-    // const img = document.createElement("img");
-    // const div = document.createElement("div");
-    // const h2 = document.createElement("h2");
-    // const p = document.createElement("p");
-    // const span = document.createElement("span");
-
     const a = document.getElementById("photographer_id");
-    // article.appendChild(img);
-    // article.appendChild(div);
-
-    // div.appendChild(h2);
-    // div.appendChild(p);
-    // div.appendChild(span);
-
     // comment éviter l'aspect redondant ici
     const userCardDOM = `
     <a href="http://127.0.0.1:5500/photographer.html?id=${this._photographer._id}" id="photographer_id" class="photographer_id">
@@ -30,8 +18,6 @@ class PhotographerCard {
         src=${this._photographer.portrait}
       >
     </a>
-        <h2 
-        > ${this._photographer.name}<h2/>
         <p>${this._photographer.location}<p/>
         <p>${this._photographer.tagline}<p/>
         <span>${this._photographer.price}/jour<span/>

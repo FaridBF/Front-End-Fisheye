@@ -1,3 +1,3 @@
 function photographerFactory(data) {
-  return new Photographer(data);
+  return new PhotographerModel(data);
 }

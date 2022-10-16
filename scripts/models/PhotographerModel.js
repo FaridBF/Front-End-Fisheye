@@ -1,4 +1,4 @@
-class Photographer {
+class PhotographerModel {
   constructor(data) {
     // on va renseigner les propriétés d'instance de l'objet
     this._name = data.name;

@@ -8,15 +8,16 @@ class Index {
 
   async init() {
     const photographersData = await this.photographersApi.getPhotographers();
-    console.log("photographersData", photographersData);
+    // console.log("photographersData", photographersData);
     photographersData.photographers.forEach((photographer) => {
+      // console.log("photographer index js", photographer);
       const photographerModel = photographerFactory(photographer);
       console.log("photographerModel", photographerModel);
       // permet d'instancier la class PhotographersCard
       const photographerCard = new PhotographerCard(photographerModel);
-      console.log(photographerCard);
+      // console.log(photographerCard);
       const userCardDOM = photographerCard.userCardDOM();
-      console.log(userCardDOM);
+      // console.log(userCardDOM);
       this.photographersSection.appendChild(userCardDOM);
     });
   }
