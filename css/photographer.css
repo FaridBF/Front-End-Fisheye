@@ -4,8 +4,11 @@
 
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
-  margin: 0 100px;
+  min-height: 300px;
+}
+
+.title_header {
+  color: #911c1c;
 }
 
 .contact_button {
@@ -78,7 +81,9 @@ form input {
 /*New class à trier */
 
 img.img_profil {
-  width: 5%;
+  height: 192px;
+  width: 192px;
+  object-fit: cover;
 }
 
 .your_message {
@@ -90,3 +95,35 @@ img.img_profil {
 }
 
 /*Media */
+.media-card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-content: space-between;
+}
+.media_card_article {
+  width: 350px;
+  height: 300px;
+  margin-top: 45px;
+}
+
+.media_card_imgArticle {
+  width: 100%;
+  object-fit: cover;
+  height: 90%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.media_card_videoArticle {
+  background-color: black;
+  width: 350px;
+  min-height: 275px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.media_card_titleAndLikesArticle {
+  display: flex;
+  justify-content: space-between;
+}

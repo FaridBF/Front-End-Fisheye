@@ -38,10 +38,12 @@ class Photographer {
     photographerDataMediasArray.forEach((media) => {
       //
       const mediaType = "image" in media ? "image" : "video";
+
       // const mediaType = "image" in media ? "image" : "video" in media ? "video" : "erreur";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaCard = new PhotographerMediaCard(
-        photographerMediaModel
+        photographerMediaModel,
+        mediaType
       );
       // console.log(photographerMediaCard);
       const mediaCardInDOM = photographerMediaCard.addMediaCardToDOM();

@@ -2,7 +2,7 @@
 
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
+  margin: 0px 75px;
 }
 
 header {
@@ -13,21 +13,14 @@ header {
   height: 90px;
 }
 
-h1 {
-  color: #901c1c;
-  margin-right: 100px;
-}
-
 .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
-  margin-top: 100px;
 }
 
 .photographer_section article {
@@ -44,10 +37,52 @@ h1 {
 }
 
 .photographer_section article img {
-  height: 200px;
-  width: 200px;
+  height: 192px;
+  width: 192px;
+  object-fit: cover;
 }
 
 .img_profil {
   border-radius: 100%;
+}
+
+.title_profil {
+  color: #901c1c;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+  margin: 0;
+  text-align: center;
+}
+
+.location_profil {
+  color: #901c1c;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  margin: 0;
+}
+
+.tagline_profil {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 13px;
+  text-align: center;
+  margin: 0;
+  margin: 0;
+}
+
+.price_profil {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #757575;
+  margin: 0;
 }

@@ -6,7 +6,7 @@ class PhotographerModel {
     this._location = data.city + ", " + data.country;
     this._tagline = data.tagline;
     this._price = data.price;
-    this._portrait = `./assets/photographers/index/${data.portrait}`;
+    this._portrait = `./assets/photographers/${data.portrait}`;
   }
   // j'ajoute des getters afin d'accéder aux propriétés de mon objet
   get name() {

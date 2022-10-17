@@ -1,27 +1,59 @@
 // permet de retourner le template ou la vue
 // son rôle est d'afficher les informations
 class PhotographerMediaCard {
-  constructor(media) {
+  constructor(media, mediaType) {
     this._media = media;
+    this._mediaType = mediaType;
   }
   addMediaCardToDOM() {
-    const article = document.createElement("article");
-    article.classList.add("media-card-article");
-    // const imgaArticle = document.createElement("img");
-    // imgaArticle.classList.add("media-card-imgaArticle");
-    // const titleArticle = document.createElement("div");
-    // titleArticle.classList.add("media-card-titleArticle");
-    // const likesArticle = document.createElement("div");
-    // likesArticle.classList.add("media-card-titleArticle");
-    // <img
-    //   alt=${this._media.image}
-    //   src=${this._media.image}
-    // >
-    const mediaCardInDOM = `
-        <p>${this._media.title}</p>
-        <span>${this._media.likes}/jour</span>
-      `;
-    article.innerHTML = mediaCardInDOM;
-    return article;
+    if (this._mediaType === "video") {
+      return addMediaVideo(this._media);
+    } else {
+      return addMediaImage(this._media);
+    }
   }
+}
+
+function addMediaVideo(media) {
+  const article = document.createElement("article");
+  article.classList.add("media_card_article");
+  const imgaArticle = document.createElement("video");
+  imgaArticle.classList.add("media_card_imgArticle");
+  const titleArticle = document.createElement("div");
+  titleArticle.classList.add("media_card_titleArticle");
+  const likesArticle = document.createElement("div");
+  likesArticle.classList.add("media_card_titleArticle");
+
+  const mediaCardInDOM = `
+  <video controls class="media_card_videoArticle">
+  <source src="${media.media}"
+          type="video/mp4">
+  </video>
+      <p class="media_card_titleAndLikesArticle">${media.title}<span>${media.likes}❤️</span></p>
+    `;
+  article.innerHTML = mediaCardInDOM;
+  return article;
+}
+
+function addMediaImage(media) {
+  console.log(this._mediaType);
+  const article = document.createElement("article");
+  article.classList.add("media_card_article");
+  const imgaArticle = document.createElement("img");
+  imgaArticle.classList.add("media_card_imgArticle");
+  const titleArticle = document.createElement("div");
+  titleArticle.classList.add("media_card_titleArticle");
+  const likesArticle = document.createElement("div");
+  likesArticle.classList.add("media_card_titleArticle");
+
+  const mediaCardInDOM = `
+  <img
+    class="media_card_imgArticle"
+    alt=${media.title}
+    src=${media.media}
+  >
+      <p class="media_card_titleAndLikesArticle">${media.title}<span>${media.likes}❤️</span></p>
+    `;
+  article.innerHTML = mediaCardInDOM;
+  return article;
 }
