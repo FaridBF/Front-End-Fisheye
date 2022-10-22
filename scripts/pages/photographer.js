@@ -1,6 +1,6 @@
 class Photographer {
   constructor() {
-    this.photographersSection = document.querySelector(".photograph-header");
+    this.photographerHeader = document.querySelector(".photograph-header");
     this.mediasSection = document.querySelector(".media-card-container");
     this.photographerId = new URL(location.href).searchParams.get("id");
     // on va instancier le class PhotographersApi
@@ -21,11 +21,12 @@ class Photographer {
     const photographerModel = photographerFactory(photographer);
     // console.log("photographerModel", photographerModel);
     // permet d'instancier la class PhotographersCard
-    const photographerCard = new PhotographerCard(photographerModel);
+    const photographerCardItem = new PhotographerCard(photographerModel);
     // console.log(photographerCard);
-    const userCardDOM = photographerCard.userCardDOM();
-    // console.log(userCardDOM);
-    this.photographersSection.appendChild(userCardDOM);
+    const photographerCard = photographerCardItem.getPhotographerSelectedCard();
+    // console.log(photographerCard);
+    // this.photographerHeader.appendChild(photographerCard);
+    this.photographerHeader.innerHTML = photographerCard;
 
     /////////////////////////////////////////////////////
     ///gestion des médias//////

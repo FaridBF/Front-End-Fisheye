@@ -14,11 +14,11 @@ class Index {
       const photographerModel = photographerFactory(photographer);
       // console.log("photographerModel", photographerModel);
       // permet d'instancier la class PhotographersCard
-      const photographerCard = new PhotographerCard(photographerModel);
+      const photographerCardItem = new PhotographerCard(photographerModel);
       // console.log(photographerCard);
-      const userCardDOM = photographerCard.userCardDOM();
-      // console.log(userCardDOM);
-      this.photographersSection.appendChild(userCardDOM);
+      const photographerCard = photographerCardItem.getPhotographerCard();
+      // console.log(photographerCard);
+      this.photographersSection.appendChild(photographerCard);
     });
   }
 }

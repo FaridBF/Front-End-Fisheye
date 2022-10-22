@@ -3,8 +3,47 @@
 }
 
 .photograph-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   background-color: #fafafa;
   min-height: 300px;
+}
+
+.photographer_details {
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.photographer_title_profil {
+  color: #d3573c;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  margin: 0;
+}
+
+.photographer_location_profil {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+  color: #901c1c;
+}
+
+.photographer_tagline_profil {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #525252;
 }
 
 .title_header {
@@ -100,6 +139,7 @@ img.img_profil {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   align-content: space-between;
+  justify-items: center;
 }
 .media_card_article {
   width: 350px;
@@ -126,4 +166,11 @@ img.img_profil {
 .media_card_titleAndLikesArticle {
   display: flex;
   justify-content: space-between;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  color: #911c1c;
+  margin: 0;
 }
