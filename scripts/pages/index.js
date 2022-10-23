@@ -8,7 +8,6 @@ class Index {
 
   async init() {
     const photographersData = await this.photographersApi.getPhotographers();
-    console.log("photographersData", photographersData);
     photographersData.photographers.forEach((photographer) => {
       const photographerModel = photographerFactory(photographer);
       // permet d'instancier la class PhotographersCard
