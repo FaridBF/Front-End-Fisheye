@@ -2,6 +2,7 @@ class Photographer {
   constructor() {
     this.photographerHeader = document.querySelector(".photograph-header");
     this.mediasSection = document.querySelector(".media-card-container");
+    this.slidesContainer = document.querySelector("#slides-container");
     // récupération de l'id uniquement via searchParams
     this.photographerId = new URL(location.href).searchParams.get("id");
     this.photographersApi = new PhotographersApi("./data/photographers.json");
@@ -9,7 +10,8 @@ class Photographer {
 
   async init() {
     this.displayPhotographerSelected();
-    this.displayPhotographerMedias();
+    await this.displayPhotographerMedias();
+    this.addClickEventOnCards();
   }
 
   /**
@@ -45,6 +47,46 @@ class Photographer {
       );
       const mediaCardInDOM = photographerMediaCard.addMediaCardToDOM();
       this.mediasSection.appendChild(mediaCardInDOM);
+    });
+  }
+
+  /**
+   * Ajout de l'écouteur d'évènements sur les médias
+   * et appel de la fonction qui affiche le carroussel
+   */
+  addClickEventOnCards() {
+    const mediaCards = Array.from(
+      document.getElementsByClassName("media_card_article")
+    );
+    for (var i = 0; i < mediaCards?.length; i++) {
+      mediaCards[i].addEventListener("click", (e) => {
+        e.preventDefault();
+        this.displayMediaCarroussel();
+      });
+    }
+  }
+
+  /**
+   * Affiche le carroussel qui fait défiler les medias
+   */
+  async displayMediaCarroussel() {
+    console.log("displayMediaCarroussel");
+
+    const photographerDataMediasArray =
+      await this.photographersApi.getMediasByPhotographerId(
+        this.photographerId
+      );
+    photographerDataMediasArray.forEach((media) => {
+      const mediaType = "image" in media ? "image" : "video";
+      const photographerMediaModel = photographerMediaFactory(media, mediaType);
+      const photographerMediaSlide = new PhotographerMediaSlide(
+        photographerMediaModel,
+        mediaType
+      );
+
+      const mediaSlideInDOM =
+        photographerMediaSlide.addMediaSlideToCarrousselDOM();
+      this.slidesContainer.appendChild(mediaSlideInDOM);
     });
   }
 }

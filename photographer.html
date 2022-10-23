@@ -3,6 +3,7 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/lightbox-modal.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -18,6 +19,20 @@
     </div>
     <div class="media-card-container"></div>
   </main>
+
+  <!-- gestion afficher/pas afficher -->
+  <button class="carroussel">Afficher slides</button>
+  <section class="slider-wrapper">
+    <button class="slide-arrow" id="slide-arrow-prev">
+      &#8249;
+    </button>
+    <button class="slide-arrow" id="slide-arrow-next">
+      &#8250;
+    </button>
+    <ul class="slides-container" id="slides-container">
+    </ul>
+  </section>
+
   <div id="contact_modal">
     <div class="modal">
       <header>
@@ -60,11 +75,14 @@
   <!-- Templates -->
   <script src="./scripts/templates/PhotographerCard.js"></script>
   <script src="./scripts/templates/PhotographerMediaCard.js"></script>
+  <script src="./scripts/templates/PhotographerMediaSlide.js"></script>
 
   <!-- Api -->
   <script src="./scripts/api/Api.js"></script>
-
   <script src="./scripts/pages/photographer.js"></script>
+
+  <!-- Utils -->
+  <script src="./scripts/utils/lightbox-modal.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
 </body>
 
