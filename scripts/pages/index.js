@@ -10,14 +10,10 @@ class Index {
     const photographersData = await this.photographersApi.getPhotographers();
     console.log("photographersData", photographersData);
     photographersData.photographers.forEach((photographer) => {
-      // console.log("photographer index js", photographer);
       const photographerModel = photographerFactory(photographer);
-      // console.log("photographerModel", photographerModel);
       // permet d'instancier la class PhotographersCard
       const photographerCardItem = new PhotographerCard(photographerModel);
-      // console.log(photographerCard);
       const photographerCard = photographerCardItem.getPhotographerCard();
-      // console.log(photographerCard);
       this.photographersSection.appendChild(photographerCard);
     });
   }
