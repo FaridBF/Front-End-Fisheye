@@ -1,8 +1,19 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
-  // récup nom du photographe ds photographerCard via getElementById
-  // l'ajouter dans le h2, via un innerHTML
+}
+
+let form = document.querySelector("#contact_form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  for (let item of formData) {
+    console.log(item[0]);
+  }
+});
+
+function submitForm() {
+  console.log("toto");
 }
 
 function closeModal() {

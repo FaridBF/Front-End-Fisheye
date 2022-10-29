@@ -1,6 +1,7 @@
 class PhotographerMediaSlide {
   constructor(media, mediaType) {
     this._media = media;
+    // console.log("media", media);
     this._mediaType = mediaType;
   }
 
@@ -22,7 +23,8 @@ class PhotographerMediaSlide {
       <source src="${media.media}"
               type="video/mp4">
       </video>
-        `;
+      `;
+    // <p>${media.title}</p>
     li.innerHTML = mediaSlideInDOM;
     return li;
   }
@@ -38,7 +40,8 @@ class PhotographerMediaSlide {
         alt=${media.title}
         src=${media.media}
       >
-        `;
+      `;
+    // <p>${media.title}</p>;
     li.innerHTML = mediaSlideInDOM;
     return li;
   }

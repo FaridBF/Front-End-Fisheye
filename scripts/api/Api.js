@@ -23,7 +23,6 @@ class PhotographersApi extends Api {
   }
   // pour un seul photographe récupéré via l'id
   async getPhotographer(photographerId) {
-    console.log(photographerId);
     // récup tableau des photographes
     const data = await this.get();
     //récup uniquement de l'objet via l'ID
