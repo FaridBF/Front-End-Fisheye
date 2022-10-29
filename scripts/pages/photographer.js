@@ -58,25 +58,34 @@ class Photographer {
     const mediaCards = Array.from(
       document.getElementsByClassName("media_card_article")
     );
-    for (var i = 0; i < mediaCards?.length; i++) {
+    for (let i = 0; i < mediaCards?.length; i++) {
       mediaCards[i].addEventListener("click", (e) => {
         e.preventDefault();
-        this.displayMediaCarroussel();
+        this.displayMediaCarroussel(i);
       });
     }
   }
 
   /**
    * Affiche le carroussel qui fait défiler les medias
+   * @param {number} i index du media cliqué
    */
-  async displayMediaCarroussel() {
+  async displayMediaCarroussel(i) {
     console.log("displayMediaCarroussel");
 
     const photographerDataMediasArray =
       await this.photographersApi.getMediasByPhotographerId(
         this.photographerId
       );
-    photographerDataMediasArray.forEach((media) => {
+    // réordonner le tableau en fonction de l'image sur laquelle l'utilisateur a cliqué
+    photographerDataMediasArray.forEach((media, index) => {
+      if (index === i) {
+        photographerDataMediasArray.splice(i, 1);
+        photographerDataMediasArray.unshift(media);
+      }
+    });
+    // après avoir réordonné le tableau
+    photographerDataMediasArray.forEach((media, index) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaSlide = new PhotographerMediaSlide(
