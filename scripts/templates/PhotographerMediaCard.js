@@ -17,6 +17,9 @@ class PhotographerMediaCard {
   addMediaVideo(media) {
     const article = document.createElement("article");
     article.classList.add("media_card_article");
+    article.addEventListener("click", () => {
+      displayLightBoxModal();
+    });
     const imgArticle = document.createElement("video");
     imgArticle.classList.add("media_card_imgArticle");
     const titleArticle = document.createElement("div");
@@ -36,9 +39,11 @@ class PhotographerMediaCard {
   }
 
   addMediaImage(media) {
-    console.log(this._mediaType);
     const article = document.createElement("article");
     article.classList.add("media_card_article");
+    article.addEventListener("click", () => {
+      displayLightBoxModal();
+    });
     const imgaArticle = document.createElement("img");
     imgaArticle.classList.add("media_card_imgArticle");
     const titleArticle = document.createElement("div");
@@ -52,8 +57,8 @@ class PhotographerMediaCard {
       alt=${media.title}
       src=${media.media}
     >
-        <p class="media_card_titleAndLikesArticle">${media.title}<span>${media.likes}❤️</span></p>
-      `;
+    <p class="media_card_titleAndLikesArticle">${media.title}<span>${media.likes}❤️</span></p>`;
+
     article.innerHTML = mediaCardInDOM;
     return article;
   }
