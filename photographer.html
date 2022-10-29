@@ -12,7 +12,8 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="http://127.0.0.1:5500/"> <img src="assets/images/logo.png" class="logo" alt="illustration Fisheye" />
+    </a>
   </header>
   <main id="main">
     <div class="photograph-header">
@@ -21,19 +22,19 @@
   </main>
 
   <!-- gestion afficher/pas afficher -->
-  <button class="carroussel">Afficher slides</button>
-  <section class="slider-wrapper">
+  <section class="slider-wrapper" id="lightBoxModal">
     <button class="slide-arrow" id="slide-arrow-prev">
       &#8249;
     </button>
     <button class="slide-arrow" id="slide-arrow-next">
       &#8250;
     </button>
+    <div class="closeLightBoxModal" onclick="closeLightBoxModal()">❌</div>
     <ul class="slides-container" id="slides-container">
     </ul>
   </section>
 
-  <div id="contact_modal">
+  <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contact_modal">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
