@@ -43,19 +43,19 @@
       <form id="contact_form" name="contact_form" method="post" action="#">
         <div>
           <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" minlength="3" maxlength="25" size="10" />
+          <input type="text" id="firstName" name="firstName" minlength="3" maxlength="25" size="14" required />
         </div>
         <div>
           <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" minlength="2" maxlength="25" size="10" />
+          <input type="text" id="lastName" name="lastName" minlength="2" maxlength="25" size="14" required />
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" size="30" name="email" />
+          <input type="email" id="email" size="30" name="email" required />
         </div>
         <div>
           <label for="message">Votre message</label>
-          <input class="message" type="textarea" id="message" name="message" rows="5" cols="33" />
+          <input class="message" type="textarea" id="message" name="message" rows="5" cols="33" required />
         </div>
         <button type="submit" class="contact_button">Envoyer</button>
       </form>
