@@ -19,12 +19,13 @@ class PhotographerMediaSlide {
     li.classList.add("slide");
 
     const mediaSlideInDOM = `
-      <video controls >
+      <video class="slide_content"
+      controls >
       <source src="${media.media}"
               type="video/mp4">
       </video>
+      <p class="media_title">${media.title}</p>
       `;
-    // <p>${media.title}</p>
     li.innerHTML = mediaSlideInDOM;
     return li;
   }
@@ -40,8 +41,8 @@ class PhotographerMediaSlide {
         alt=${media.title}
         src=${media.media}
       >
+      <p class="media_title">${media.title}</p>
       `;
-    // <p>${media.title}</p>;
     li.innerHTML = mediaSlideInDOM;
     return li;
   }

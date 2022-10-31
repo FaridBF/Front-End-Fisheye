@@ -1,6 +1,8 @@
 function displayLightBoxModal() {
   const lightBoxModal = document.getElementById("lightBoxModal");
   lightBoxModal.style.display = "block";
+  const mainContent = document.getElementById("main");
+  mainContent.style.display = "none";
   const slidesContainer = document.getElementById("slides-container");
   // const slide = document.querySelector(".slide");
   const prevButton = document.getElementById("slide-arrow-prev");
@@ -22,4 +24,8 @@ function displayLightBoxModal() {
 function closeLightBoxModal() {
   const modal = document.getElementById("lightBoxModal");
   modal.style.display = "none";
+  const mainContent = document.getElementById("main");
+  mainContent.style.display = "block";
+  // reload l'index
+  location.reload();
 }

@@ -60,7 +60,7 @@ class Photographer {
     );
     for (let i = 0; i < mediaCards?.length; i++) {
       mediaCards[i].addEventListener("click", (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         this.displayMediaCarroussel(i);
       });
     }
@@ -71,7 +71,7 @@ class Photographer {
    * @param {number} i index du media cliqué
    */
   async displayMediaCarroussel(i) {
-    console.log("displayMediaCarroussel");
+    console.log("displayMediaCarroussel", i);
 
     const photographerDataMediasArray =
       await this.photographersApi.getMediasByPhotographerId(
@@ -84,6 +84,7 @@ class Photographer {
         photographerDataMediasArray.unshift(media);
       }
     });
+    console.log("ordre tableau", photographerDataMediasArray);
     // après avoir réordonné le tableau
     photographerDataMediasArray.forEach((media, index) => {
       const mediaType = "image" in media ? "image" : "video";
@@ -92,7 +93,7 @@ class Photographer {
         photographerMediaModel,
         mediaType
       );
-
+      console.log(photographerMediaSlide);
       const mediaSlideInDOM =
         photographerMediaSlide.addMediaSlideToCarrousselDOM();
       this.slidesContainer.appendChild(mediaSlideInDOM);
