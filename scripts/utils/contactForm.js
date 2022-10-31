@@ -1,6 +1,9 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  // création du filtre
+  const mainContentFilter = document.getElementById("main");
+  mainContentFilter.style.filter = "blur(3px)";
 }
 
 let form = document.querySelector("#contact_form");
@@ -28,4 +31,7 @@ function submitForm() {
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
+  // annulation du filtre
+  const mainContentFilter = document.getElementById("main");
+  mainContentFilter.style.filter = "none";
 }
