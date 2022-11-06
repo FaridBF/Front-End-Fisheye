@@ -27,7 +27,7 @@ class PhotographerMediaCard {
     <source src="${media.media}"
             type="video/mp4">
     </video>
-        <p class="media_card_titleAndLikesArticle">${media.title}<span class="like"">${media.likes}❤️</span></p>
+        <p class="media_card_titleAndLikesArticle">${media.title}<span class="like"">${media.likes} ❤️</span></p>
       `;
     article.innerHTML = mediaCardInDOM;
     return article;
@@ -40,6 +40,8 @@ class PhotographerMediaCard {
     titleArticle.classList.add("media_card_titleArticle");
     const likesArticle = document.createElement("div");
     likesArticle.classList.add("media_card_titleArticle");
+    const pricePhotographer = document.querySelector(".pricePhotographer");
+    pricePhotographer.innerHTML = `${parseInt(media.price)}€ / jour`;
 
     const mediaCardInDOM = `
     <img
@@ -47,7 +49,7 @@ class PhotographerMediaCard {
       alt=${media.title}
       src=${media.media}
     >
-    <p class="media_card_titleAndLikesArticle">${media.title}<span class="like">${media.likes}</span><span>❤️</span></p>`;
+    <p class="media_card_titleAndLikesArticle">${media.title}<span class="like">${media.likes}❤️</span></p>`;
 
     article.innerHTML = mediaCardInDOM;
     return article;

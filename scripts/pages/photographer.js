@@ -70,17 +70,34 @@ class Photographer {
    * Ajout de l'écouteur d'évènements "like" sur les médias
    */
   addLikeEventOnCards() {
+    const valueArray = [];
+    const newArray = [];
     const mediasToLike = document.querySelectorAll(".like");
     mediasToLike.forEach((mediaToLike) => {
       mediaToLike.addEventListener("click", () => {
         if (mediaToLike.classList.contains("liked")) {
           alert("Vous avez déjà aimé ce contenu");
         } else {
+          // j'incrémente les likes d'une image ou une vidéo
           mediaToLike.innerHTML = `${parseInt(mediaToLike.textContent) + 1}`;
           mediaToLike.classList.add("liked");
+          //j'incrémente le total des likes
+          const totalLikes = document.querySelector(".totalLikes");
+          totalLikes.innerHTML = `${parseInt(totalLikes.textContent) + 1}`;
         }
       });
+      const totalLikes = parseInt(mediaToLike.textContent);
+      const newTotalLikes = valueArray.push(totalLikes);
     });
+    const initialValue = 0;
+    const sumWithInitial = valueArray.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+    newArray.push(sumWithInitial);
+    // affichage total des likes dans la modal likesMedia
+    const totalLikes = document.querySelector(".totalLikes");
+    totalLikes.innerHTML = `${parseInt(newArray[0])}`;
   }
 
   /**

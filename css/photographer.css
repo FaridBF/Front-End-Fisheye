@@ -144,6 +144,7 @@ img.img_profil {
   grid-template-rows: repeat(3, 1fr);
   align-content: space-between;
   justify-items: center;
+  position: relative;
 }
 .media_card_article {
   width: 350px;
@@ -177,4 +178,29 @@ img.img_profil {
   line-height: 31px;
   color: #911c1c;
   margin: 0;
+}
+
+/*modalPriceAndLiked */
+
+.modalPriceAndLiked {
+  background: #db8876;
+  border-radius: 5px;
+  color: #000000;
+  height: 80px;
+  width: 376px;
+  position: fixed;
+  bottom: 0;
+  right: 8%;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.totalLikes {
+  margin-right: -80px;
 }
