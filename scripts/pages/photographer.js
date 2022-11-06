@@ -12,6 +12,7 @@ class Photographer {
     this.displayPhotographerSelected();
     await this.displayPhotographerMedias();
     this.addClickEventOnCards();
+    this.addLikeEventOnCards();
   }
 
   /**
@@ -63,6 +64,23 @@ class Photographer {
         this.displayMediaCarroussel(i);
       });
     }
+  }
+
+  /**
+   * Ajout de l'écouteur d'évènements "like" sur les médias
+   */
+  addLikeEventOnCards() {
+    const mediasToLike = document.querySelectorAll(".like");
+    mediasToLike.forEach((mediaToLike) => {
+      mediaToLike.addEventListener("click", () => {
+        if (mediaToLike.classList.contains("liked")) {
+          alert("Vous avez déjà aimé ce contenu");
+        } else {
+          mediaToLike.innerHTML = `${parseInt(mediaToLike.textContent) + 1}`;
+          mediaToLike.classList.add("liked");
+        }
+      });
+    });
   }
 
   /**
