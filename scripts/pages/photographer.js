@@ -55,12 +55,11 @@ class Photographer {
    * et appel de la fonction qui affiche le carroussel
    */
   addClickEventOnCards() {
-    const mediaCards = Array.from(
-      document.getElementsByClassName("media_card_article")
-    );
+    const mediaCards = Array.from(document.getElementsByClassName("media"));
     for (let i = 0; i < mediaCards?.length; i++) {
       mediaCards[i].addEventListener("click", (e) => {
         // e.preventDefault();
+        displayLightBoxModal();
         this.displayMediaCarroussel(i);
       });
     }

@@ -17,18 +17,13 @@ class PhotographerMediaCard {
   addMediaVideo(media) {
     const article = document.createElement("article");
     article.classList.add("media_card_article");
-    article.addEventListener("click", () => {
-      displayLightBoxModal();
-    });
-    const imgArticle = document.createElement("video");
-    imgArticle.classList.add("media_card_imgArticle");
     const titleArticle = document.createElement("div");
     titleArticle.classList.add("media_card_titleArticle");
     const likesArticle = document.createElement("div");
     likesArticle.classList.add("media_card_titleArticle");
 
     const mediaCardInDOM = `
-    <video controls class="media_card_videoArticle">
+    <video controls class="media_card_videoArticle media">
     <source src="${media.media}"
             type="video/mp4">
     </video>
@@ -41,11 +36,6 @@ class PhotographerMediaCard {
   addMediaImage(media) {
     const article = document.createElement("article");
     article.classList.add("media_card_article");
-    article.addEventListener("click", () => {
-      displayLightBoxModal();
-    });
-    const imgaArticle = document.createElement("img");
-    imgaArticle.classList.add("media_card_imgArticle");
     const titleArticle = document.createElement("div");
     titleArticle.classList.add("media_card_titleArticle");
     const likesArticle = document.createElement("div");
@@ -53,7 +43,7 @@ class PhotographerMediaCard {
 
     const mediaCardInDOM = `
     <img
-      class="media_card_imgArticle"
+      class="media_card_imgArticle media"
       alt=${media.title}
       src=${media.media}
     >
