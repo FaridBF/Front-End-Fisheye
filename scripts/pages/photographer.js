@@ -73,32 +73,58 @@ class Photographer {
   async displayMediaCarroussel(i) {
     console.log("displayMediaCarroussel", i);
 
-    const photographerDataMediasArray =
+    let photographerDataMediasArray =
       await this.photographersApi.getMediasByPhotographerId(
         this.photographerId
       );
-    // réordonner le tableau en fonction de l'image sur laquelle l'utilisateur a cliqué
-    photographerDataMediasArray.forEach((media, index) => {
-      if (index === i) {
-        photographerDataMediasArray.splice(i, 1);
-        photographerDataMediasArray.unshift(media);
-      }
-    });
     console.log("ordre tableau", photographerDataMediasArray);
-    // après avoir réordonné le tableau
-    photographerDataMediasArray.forEach((media, index) => {
+
+    photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaSlide = new PhotographerMediaSlide(
         photographerMediaModel,
         mediaType
       );
-      console.log(photographerMediaSlide);
       const mediaSlideInDOM =
         photographerMediaSlide.addMediaSlideToCarrousselDOM();
       this.slidesContainer.appendChild(mediaSlideInDOM);
     });
+    displayCurrentSlides(i);
   }
+}
+
+function displayCurrentSlides(currentIndex) {
+  console.log("currentIndex", currentIndex);
+  // récupère les slides du DOM
+  let slides = document.querySelectorAll(".slide");
+  console.log("slides length", slides.length);
+
+  // boucler sur les slides
+  slides.forEach((slide, counter) => {
+    slide.style.display = "none";
+    // console.log("counter", counter);
+    // console.log("i", currentIndex);
+    if (currentIndex == counter) {
+      slide.style.display = "block";
+    }
+  });
+
+  const prevButton = document.getElementById("slide-arrow-prev");
+  prevButton.addEventListener("click", () => {
+    slides = [];
+    console.log("slides vide ?", slides);
+    displayCurrentSlides(currentIndex - 1);
+    console.log("slides vide ?", slides);
+  });
+
+  const nextButton = document.getElementById("slide-arrow-next");
+  nextButton.addEventListener("click", () => {
+    slides = [];
+    console.log("slides vide ?", slides);
+    displayCurrentSlides(currentIndex + 1);
+    console.log("slides vide ?", slides);
+  });
 }
 
 const photographer = new Photographer();

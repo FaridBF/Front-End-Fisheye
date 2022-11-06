@@ -1,4 +1,5 @@
 function displayLightBoxModal() {
+  console.log("displayLightBoxModal");
   const lightBoxModal = document.getElementById("lightBoxModal");
   lightBoxModal.style.display = "block";
   const mainContent = document.getElementById("main");
@@ -8,17 +9,19 @@ function displayLightBoxModal() {
   const prevButton = document.getElementById("slide-arrow-prev");
   const nextButton = document.getElementById("slide-arrow-next");
 
-  nextButton.addEventListener("click", () => {
-    // const slideWidth = slide.clientWidth;
-    const slideWidth = 1500;
-    slidesContainer.scrollLeft += slideWidth;
-  });
+  // nextButton.addEventListener("click", () => {
+  //   // const slideWidth = slide.clientWidth;
+  //   const slideWidth = 1500;
+  //   slidesContainer.scrollLeft += slideWidth;
+  //   // displayCurrentSlides(currentIndex + 1);
+  // });
 
-  prevButton.addEventListener("click", () => {
-    // const slideWidth = slide.clientWidth;
-    const slideWidth = 1500; // 20128
-    slidesContainer.scrollLeft -= slideWidth;
-  });
+  // prevButton.addEventListener("click", () => {
+  //   // const slideWidth = slide.clientWidth;
+  //   const slideWidth = 1500; // 20128
+  //   slidesContainer.scrollLeft -= slideWidth;
+  //   // displayCurrentSlides(currentIndex - 1);
+  // });
 }
 
 function closeLightBoxModal() {
@@ -26,6 +29,4 @@ function closeLightBoxModal() {
   modal.style.display = "none";
   const mainContent = document.getElementById("main");
   mainContent.style.display = "block";
-  // reload l'index
-  location.reload();
 }
