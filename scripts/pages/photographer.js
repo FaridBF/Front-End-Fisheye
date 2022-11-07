@@ -6,6 +6,7 @@ class Photographer {
     // récupération de l'id uniquement via searchParams
     this.photographerId = new URL(location.href).searchParams.get("id");
     this.photographersApi = new PhotographersApi("./data/photographers.json");
+    this.photographerDataMediasArray = [];
   }
 
   async init() {
@@ -13,6 +14,7 @@ class Photographer {
     await this.displayPhotographerMedias();
     this.addClickEventOnCards();
     this.addLikeEventOnCards();
+    this.addClickEventOnFilters();
   }
 
   /**
@@ -35,11 +37,21 @@ class Photographer {
    * Afficher les médias du photographe sélectioné
    */
   async displayPhotographerMedias() {
-    const photographerDataMediasArray =
+    this.photographerDataMediasArray =
       await this.photographersApi.getMediasByPhotographerId(
         this.photographerId
       );
-    photographerDataMediasArray.forEach((media) => {
+    console.log(
+      "this.photographerDataMediasArray",
+      this.photographerDataMediasArray
+    );
+
+    // this.toto = photographerDataMediasArray;
+    sortByLikes(this.photographerDataMediasArray);
+    // this.sortByTitle(photographerDataMediasArray);
+    // trier par date
+
+    this.photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaCard = new PhotographerMediaCard(
@@ -100,20 +112,41 @@ class Photographer {
     totalLikes.innerHTML = `${parseInt(newArray[0])}`;
   }
 
+  addClickEventOnFilters() {
+    const filters = document.querySelector("#filter-select");
+    filters.addEventListener("change", () => {
+      // en fonction de la valeur de filters (dc de l'option sélectionnée)
+      console.log("sort change:", filters.value);
+      if (filters.value === "title") {
+        sortByTitle(this.photographerDataMediasArray);
+        console.log(
+          "this.photographerDataMediasArray:",
+          this.photographerDataMediasArray
+        );
+      } else if (filters.value === "date") {
+        sortByDate(this.photographerDataMediasArray);
+        console.log(
+          "this.photographerDataMediasArray:",
+          this.photographerDataMediasArray
+        );
+      } else {
+        sortByLikes(this.photographerDataMediasArray);
+        console.log(
+          "this.photographerDataMediasArray:",
+          this.photographerDataMediasArray
+        );
+      }
+    });
+  }
+
   /**
+   *
    * Affiche le carroussel qui fait défiler les medias
    * @param {number} i index du media cliqué
    */
   async displayMediaCarroussel(i) {
     console.log("displayMediaCarroussel", i);
-
-    let photographerDataMediasArray =
-      await this.photographersApi.getMediasByPhotographerId(
-        this.photographerId
-      );
-    console.log("ordre tableau", photographerDataMediasArray);
-
-    photographerDataMediasArray.forEach((media) => {
+    this.photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaSlide = new PhotographerMediaSlide(
@@ -128,6 +161,10 @@ class Photographer {
   }
 }
 
+/**
+ *
+ * @param {*} currentIndex
+ */
 function displayCurrentSlides(currentIndex) {
   console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
@@ -144,6 +181,7 @@ function displayCurrentSlides(currentIndex) {
     }
   });
 
+  // Gestion du clique sur le bouton "précédent" du carroussel
   const prevButton = document.getElementById("slide-arrow-prev");
   prevButton.addEventListener("click", () => {
     slides = [];
@@ -152,12 +190,41 @@ function displayCurrentSlides(currentIndex) {
     console.log("slides vide ?", slides);
   });
 
+  // Gestion du clique sur le bouton "suivant" du carroussel
   const nextButton = document.getElementById("slide-arrow-next");
   nextButton.addEventListener("click", () => {
     slides = [];
     console.log("slides vide ?", slides);
     displayCurrentSlides(currentIndex + 1);
     console.log("slides vide ?", slides);
+  });
+}
+
+/**
+ * Trier par likes (popularité) : par défaut
+ * @param {array} photographerDataMediasArray
+ */
+function sortByLikes(photographerDataMediasArray) {
+  photographerDataMediasArray.sort((a, b) => b.likes - a.likes);
+}
+
+/**
+ * Trier contenu par titre
+ * @param {array} photographerDataMediasArray
+ */
+function sortByTitle(photographerDataMediasArray) {
+  photographerDataMediasArray.sort(function (a, b) {
+    return a.title.localeCompare(b.title);
+  });
+}
+
+/**
+ * Trier contenu par date
+ * @param {array} photographerDataMediasArray
+ */
+function sortByDate(photographerDataMediasArray) {
+  photographerDataMediasArray.sort(function (a, b) {
+    return a.date.localeCompare(b.date);
   });
 }
 

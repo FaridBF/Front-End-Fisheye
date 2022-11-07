@@ -27,7 +27,7 @@ class PhotographerMediaCard {
     <source src="${media.media}"
             type="video/mp4">
     </video>
-        <p class="media_card_titleAndLikesArticle">${media.title}<span class="like"">${media.likes} ❤️</span></p>
+        <p class="media_card_titleAndLikesArticle">${media.title}<span class="like"">${media.likes}❤️</span></p>
       `;
     article.innerHTML = mediaCardInDOM;
     return article;
