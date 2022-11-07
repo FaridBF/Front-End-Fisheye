@@ -9,9 +9,17 @@ class Photographer {
     this.photographerDataMediasArray = [];
   }
 
+  async getMediasById(photographerId) {
+    return await this.photographersApi.getMediasByPhotographerId(
+      photographerId
+    );
+  }
+
   async init() {
     this.displayPhotographerSelected();
-    await this.displayPhotographerMedias();
+    const arrayMediasID = await this.getMediasById(this.photographerId);
+    this.photographerDataMediasArray = arrayMediasID;
+    await this.displayPhotographerMedias(arrayMediasID);
     this.addClickEventOnCards();
     this.addLikeEventOnCards();
     this.addClickEventOnFilters();
@@ -36,22 +44,12 @@ class Photographer {
   /**
    * Afficher les médias du photographe sélectioné
    */
-  async displayPhotographerMedias() {
-    this.photographerDataMediasArray =
-      await this.photographersApi.getMediasByPhotographerId(
-        this.photographerId
-      );
-    console.log(
-      "this.photographerDataMediasArray",
-      this.photographerDataMediasArray
-    );
+  async displayPhotographerMedias(photographerDataMediasArray) {
+    console.log("photographerDataMediasArray", photographerDataMediasArray);
+    //afin de delete avant de récupérer la nouvelle data trier
+    this.mediasSection.innerHTML = "";
 
-    // this.toto = photographerDataMediasArray;
-    sortByLikes(this.photographerDataMediasArray);
-    // this.sortByTitle(photographerDataMediasArray);
-    // trier par date
-
-    this.photographerDataMediasArray.forEach((media) => {
+    photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
       const photographerMediaCard = new PhotographerMediaCard(
@@ -118,23 +116,21 @@ class Photographer {
       // en fonction de la valeur de filters (dc de l'option sélectionnée)
       console.log("sort change:", filters.value);
       if (filters.value === "title") {
-        sortByTitle(this.photographerDataMediasArray);
-        console.log(
-          "this.photographerDataMediasArray:",
+        this.photographerDataMediasArray = sortByTitle(
           this.photographerDataMediasArray
         );
+        //après le tri je call mes médias pour l'afichage
+        this.displayPhotographerMedias(this.photographerDataMediasArray);
+        //toujours avec ce même résultat je call mon caroussel pour pouvoir l'afficher si besoin
+        this.addClickEventOnCards();
       } else if (filters.value === "date") {
         sortByDate(this.photographerDataMediasArray);
-        console.log(
-          "this.photographerDataMediasArray:",
-          this.photographerDataMediasArray
-        );
+        this.displayPhotographerMedias(this.photographerDataMediasArray);
+        this.addClickEventOnCards();
       } else {
         sortByLikes(this.photographerDataMediasArray);
-        console.log(
-          "this.photographerDataMediasArray:",
-          this.photographerDataMediasArray
-        );
+        this.displayPhotographerMedias(this.photographerDataMediasArray);
+        this.addClickEventOnCards();
       }
     });
   }
@@ -169,13 +165,9 @@ function displayCurrentSlides(currentIndex) {
   console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
   let slides = document.querySelectorAll(".slide");
-  console.log("slides length", slides.length);
-
   // boucler sur les slides
   slides.forEach((slide, counter) => {
     slide.style.display = "none";
-    // console.log("counter", counter);
-    // console.log("i", currentIndex);
     if (currentIndex == counter) {
       slide.style.display = "block";
     }
@@ -184,19 +176,22 @@ function displayCurrentSlides(currentIndex) {
   // Gestion du clique sur le bouton "précédent" du carroussel
   const prevButton = document.getElementById("slide-arrow-prev");
   prevButton.addEventListener("click", () => {
-    slides = [];
-    console.log("slides vide ?", slides);
-    displayCurrentSlides(currentIndex - 1);
-    console.log("slides vide ?", slides);
+    if (currentIndex === 0) {
+      console.log("ce n est pas possible");
+    } else {
+      displayCurrentSlides(currentIndex - 1);
+    }
   });
 
   // Gestion du clique sur le bouton "suivant" du carroussel
   const nextButton = document.getElementById("slide-arrow-next");
   nextButton.addEventListener("click", () => {
-    slides = [];
-    console.log("slides vide ?", slides);
-    displayCurrentSlides(currentIndex + 1);
-    console.log("slides vide ?", slides);
+    const slides = document.querySelectorAll(".slide");
+    if (currentIndex === slides.length - 1) {
+      console.log("ce n est pas possible");
+    } else {
+      displayCurrentSlides(currentIndex + 1);
+    }
   });
 }
 
@@ -205,7 +200,7 @@ function displayCurrentSlides(currentIndex) {
  * @param {array} photographerDataMediasArray
  */
 function sortByLikes(photographerDataMediasArray) {
-  photographerDataMediasArray.sort((a, b) => b.likes - a.likes);
+  return photographerDataMediasArray.sort((a, b) => b.likes - a.likes);
 }
 
 /**
@@ -213,7 +208,7 @@ function sortByLikes(photographerDataMediasArray) {
  * @param {array} photographerDataMediasArray
  */
 function sortByTitle(photographerDataMediasArray) {
-  photographerDataMediasArray.sort(function (a, b) {
+  return photographerDataMediasArray.sort(function (a, b) {
     return a.title.localeCompare(b.title);
   });
 }
@@ -223,7 +218,7 @@ function sortByTitle(photographerDataMediasArray) {
  * @param {array} photographerDataMediasArray
  */
 function sortByDate(photographerDataMediasArray) {
-  photographerDataMediasArray.sort(function (a, b) {
+  return photographerDataMediasArray.sort(function (a, b) {
     return a.date.localeCompare(b.date);
   });
 }
