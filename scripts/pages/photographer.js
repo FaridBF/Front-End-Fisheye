@@ -68,8 +68,7 @@ class Photographer {
   addClickEventOnCards() {
     const mediaCards = Array.from(document.getElementsByClassName("media"));
     for (let i = 0; i < mediaCards?.length; i++) {
-      mediaCards[i].addEventListener("click", (e) => {
-        // e.preventDefault();
+      mediaCards[i].addEventListener("click", () => {
         displayLightBoxModal();
         this.displayMediaCarroussel(i);
       });
@@ -144,7 +143,9 @@ class Photographer {
    * @param {number} i index du media cliqué
    */
   async displayMediaCarroussel(i) {
-    console.log("displayMediaCarroussel", i);
+    // vider anciennes slides
+    this.slidesContainer.innerHTML = "";
+    // reremplir le contenu des slides
     this.photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
@@ -152,6 +153,7 @@ class Photographer {
         photographerMediaModel,
         mediaType
       );
+
       const mediaSlideInDOM =
         photographerMediaSlide.addMediaSlideToCarrousselDOM();
       this.slidesContainer.appendChild(mediaSlideInDOM);
