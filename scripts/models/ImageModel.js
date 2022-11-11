@@ -1,3 +1,7 @@
+/**
+ * Classe représentant le modèle Image
+ * et contenant des getters afin d'accéder au propriétés
+ */
 class ImageModel {
   constructor(data) {
     // on va renseigner les propriétés d'instance de l'objet
@@ -9,7 +13,7 @@ class ImageModel {
     this._price = data.price;
     this._title = data.title;
   }
-  // j'ajoute des getters afin d'accéder aux propriétés de mon objet
+
   get date() {
     return this._date;
   }

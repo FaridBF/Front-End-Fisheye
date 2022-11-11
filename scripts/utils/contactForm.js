@@ -1,3 +1,6 @@
+/**
+ * Permet d'afficher la modale de contact
+ */
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
@@ -17,17 +20,16 @@ form.addEventListener("submit", (e) => {
     email: document.querySelector("#email").value,
     message: document.querySelector("#message").value
   };
-  //affichage de monobjet
+  // Affichage de mon objet form
   console.log(contactForm);
-  //reset le form après submit
+  // Réinitialiser le formulaire après l'avoir soumis
   form.reset();
   closeModal();
 });
 
-function submitForm() {
-  console.log("toto");
-}
-
+/**
+ * Permet de fermer la modale de contact
+ */
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";

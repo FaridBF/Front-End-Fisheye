@@ -1,11 +1,16 @@
-// permet de retourner le template ou la vue
-// son rôle est d'afficher les informations
+/**
+ * Classe représentant la "card" du media du photographe
+ */
 class PhotographerMediaCard {
   constructor(media, mediaType) {
     this._media = media;
     this._mediaType = mediaType;
   }
 
+  /**
+   * Gère l'ajout la "card" media sur le DOM en fonction du type
+   * @returns
+   */
   addMediaCardToDOM() {
     if (this._mediaType === "video") {
       return this.addMediaVideo(this._media);
@@ -14,6 +19,11 @@ class PhotographerMediaCard {
     }
   }
 
+  /**
+   * Ajoute la "card" media de type video sur le DOM
+   * @param {objet} media
+   * @returns article: balise article HTML à ajouter dans le DOM
+   */
   addMediaVideo(media) {
     const article = document.createElement("article");
     article.classList.add("media_card_article");
@@ -33,6 +43,13 @@ class PhotographerMediaCard {
     return article;
   }
 
+  /**
+   * Ajoute la "card" media de type image sur le DOM
+   * ainsi que le contenu de la modale qui affiche le prix du photographe
+   * et son total de likes
+   * @param {objet} media
+   * @returns article: balise article HTML à ajouter dans le DOM
+   */
   addMediaImage(media) {
     const article = document.createElement("article");
     article.classList.add("media_card_article");

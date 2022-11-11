@@ -1,3 +1,7 @@
+/**
+ * Classe représentant la gestion de la page du photographe sélectioné
+ * avec son portfolio
+ */
 class Photographer {
   constructor() {
     this.photographerHeader = document.querySelector(".photograph-header");
@@ -15,6 +19,10 @@ class Photographer {
     );
   }
 
+  /**
+   * Initialise la page du photographe pour afficher les medias
+   * via la factory des medias du photographe
+   */
   async init() {
     this.displayPhotographerSelected();
     const arrayMediasID = await this.getMediasById(this.photographerId);
@@ -45,10 +53,10 @@ class Photographer {
    * Afficher les médias du photographe sélectioné
    */
   async displayPhotographerMedias(photographerDataMediasArray) {
-    console.log("photographerDataMediasArray", photographerDataMediasArray);
-    //afin de delete avant de récupérer la nouvelle data trier
+    // vider l'ancienne section des medias
     this.mediasSection.innerHTML = "";
 
+    // récupérer la nouvelle data triée et lancer l'affichage via la factory des medias
     photographerDataMediasArray.forEach((media) => {
       const mediaType = "image" in media ? "image" : "video";
       const photographerMediaModel = photographerMediaFactory(media, mediaType);
@@ -96,7 +104,7 @@ class Photographer {
         }
       });
       const totalLikes = parseInt(mediaToLike.textContent);
-      const newTotalLikes = valueArray.push(totalLikes);
+      valueArray.push(totalLikes);
     });
     const initialValue = 0;
     const sumWithInitial = valueArray.reduce(
@@ -109,19 +117,24 @@ class Photographer {
     totalLikes.innerHTML = `${parseInt(newArray[0])}`;
   }
 
+  /**
+   * Ajout de l'écouteur d'évènements "tri" sur les médias
+   * par "popularité" ou "titre" ou "date"
+   */
   addClickEventOnFilters() {
     const filters = document.querySelector("#filter-select");
     filters.addEventListener("change", () => {
       // en fonction de la valeur de filters (dc de l'option sélectionnée)
-      console.log("sort change:", filters.value);
       if (filters.value === "title") {
         this.photographerDataMediasArray = sortByTitle(
           this.photographerDataMediasArray
         );
-        //après le tri je call mes médias pour l'afichage
+        // après le tri, appelle l'afichage des medias
         this.displayPhotographerMedias(this.photographerDataMediasArray);
-        //toujours avec ce même résultat je call mon caroussel pour pouvoir l'afficher si besoin
+        // toujours avec ce même résultat, appel de l'ajout de l'écouteur d'évènement clic sur la card
+        // pour gérer le caroussel pour pouvoir l'afficher si besoin
         this.addClickEventOnCards();
+        // idem pour l'évènement like
         this.addLikeEventOnCards();
       } else if (filters.value === "date") {
         sortByDate(this.photographerDataMediasArray);
@@ -163,11 +176,10 @@ class Photographer {
 }
 
 /**
- *
- * @param {*} currentIndex
+ * Gestion de l'affichage de la slide courante sur le carroussel
+ * @param {number} currentIndex
  */
 function displayCurrentSlides(currentIndex) {
-  console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
   let slides = document.querySelectorAll(".slide");
   // boucler sur les slides

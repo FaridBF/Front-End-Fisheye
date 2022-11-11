@@ -1,10 +1,10 @@
-// permet de retourner le template ou la vue
-// son rôle est d'afficher les informations
+/**
+ * Classe représentant la "card" du photographe avec ses informations
+ */
 class PhotographerCard {
   // reprend les attribut de Photographer
   constructor(photographer) {
     this._photographer = photographer;
-    // console.log("ici photographercard", photographer);
   }
 
   /**
@@ -25,7 +25,6 @@ class PhotographerCard {
     p2.classList.add("tagline_profil");
     const span = document.createElement("span");
     span.classList.add("price_profil");
-    // comment éviter l'aspect redondant ici
 
     const photographerCard = `
     <a href="http://127.0.0.1:5500/photographer.html?id=${this._photographer._id}" id="photographer_id" class="photographer_id">
@@ -62,7 +61,6 @@ class PhotographerCard {
     p2.classList.add("tagline_profil");
     const span = document.createElement("span");
     span.classList.add("price_profil");
-    // comment éviter l'aspect redondant ici
 
     const photographerSelectedCard = `
       <div class="photographer_container">

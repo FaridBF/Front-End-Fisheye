@@ -1,4 +1,7 @@
-//Permet de faire les requêtes HTTP etde me retourner les données transformées
+/**
+ * Classe permettant de faire les requêtes HTTP et
+ * de retourner les données transformées
+ */
 class Api {
   constructor(url) {
     this._url = url;
@@ -13,7 +16,10 @@ class Api {
   }
 }
 
-// cette class hérite de la class API
+/**
+ * Classe permettant de récupérer les données des photographes
+ * hérite de la classe API
+ */
 class PhotographersApi extends Api {
   constructor(url) {
     super(url);
@@ -25,25 +31,12 @@ class PhotographersApi extends Api {
   async getPhotographer(photographerId) {
     // récup tableau des photographes
     const data = await this.get();
-    //récup uniquement de l'objet via l'ID
+    // récup uniquement de l'objet via l'ID
     const result = data.photographers.filter((photographer) => {
       return photographer.id == parseInt(photographerId);
     });
-    // console.log(result);
     return result;
   }
-  /**
-   * TODO: delete
-   * @returns
-   */
-  // async getMedias() {
-  //   const dataMedias = await this.get();
-  //   console.log(dataMedias);
-  //   const resultMedias = dataMedias.media.map((element) => {
-  //     return element;
-  //   });
-  //   return resultMedias;
-  // }
 
   /**
    * Récupère les medias d'un photographe par son ID

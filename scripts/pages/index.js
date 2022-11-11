@@ -1,4 +1,7 @@
-// la class qui va instancier l'objet
+/**
+ * Classe représentant la gestion de la page principale
+ * avec la liste des photographes
+ */
 class Index {
   constructor() {
     this.photographersSection = document.querySelector(".photographer_section");
@@ -6,6 +9,10 @@ class Index {
     this.photographersApi = new PhotographersApi("./data/photographers.json");
   }
 
+  /**
+   * Initialise la page principale pour afficher les photographes
+   * via la factory du photographe
+   */
   async init() {
     const photographersData = await this.photographersApi.getPhotographers();
     photographersData.photographers.forEach((photographer) => {
