@@ -123,14 +123,17 @@ class Photographer {
         this.displayPhotographerMedias(this.photographerDataMediasArray);
         //toujours avec ce même résultat je call mon caroussel pour pouvoir l'afficher si besoin
         this.addClickEventOnCards();
+        this.addLikeEventOnCards();
       } else if (filters.value === "date") {
         sortByDate(this.photographerDataMediasArray);
         this.displayPhotographerMedias(this.photographerDataMediasArray);
         this.addClickEventOnCards();
+        this.addLikeEventOnCards();
       } else {
         sortByLikes(this.photographerDataMediasArray);
         this.displayPhotographerMedias(this.photographerDataMediasArray);
         this.addClickEventOnCards();
+        this.addLikeEventOnCards();
       }
     });
   }
