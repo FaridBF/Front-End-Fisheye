@@ -52,8 +52,8 @@ class PhotographerMediaSlide {
     const mediaSlideInDOM = `
       <img
         class="slide_content"
-        alt=${media.title}
-        src=${media.media}
+        alt="${media.title}"
+        src="${media.media}"
       >
       <p class="media_title">${media.title}</p>
       `;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -10,17 +10,18 @@
   <title>Fisheye - photographe </title>
 </head>
 
-<body>
+<body id="body">
   <header>
-    <a href="http://127.0.0.1:5500/"> <img src="assets/images/logo.png" class="logo" alt="illustration Fisheye" />
+    <a href="http://127.0.0.1:5500/"> <img src="assets/images/logo.png" class="logo" alt="illustration Fisheye"
+        tabindex="1" />
     </a>
   </header>
-  <main id="main">
+  <main id="main" aria-hidden="false">
     <div class="photograph-header">
     </div>
     <!-- select de tri avec 3 filtres -->
-    <label for="filter-select">Trier par</label>
-    <select name="filters" id="filter-select" class="container-filter-select">
+    <label for="filter-select" tabindex="7">Trier par</label>
+    <select name="filters" id="filter-select" class="container-filter-select" tabindex="8">
       <option class="filter-by-popularity" value="popularity">Popularité</option>
       <option class="filter-by-date" value="date">Date</option>
       <option class="filter-by-title" value="title">Titre</option>
@@ -28,57 +29,65 @@
     <div class="media-card-container"></div>
 
     <!-- modal des likes et du prix jour d'un photographe -->
-    <div class="modalPriceAndLiked"><span class="totalLikes"></span><span>🖤</span><span
+    <div class="modalPriceAndLiked" tabindex="6"><span class="totalLikes"></span><span>🖤</span><span
         class="pricePhotographer"></span></div>
   </main>
 
   <!-- gestion afficher/pas afficher -->
-  <section class="slider-wrapper" id="lightBoxModal">
-    <button class="slide-arrow" id="slide-arrow-prev">
+  <section class="slider-wrapper" id="lightBoxModal" aria-modal="true">
+    <button role="button" class="slide-arrow" id="slide-arrow-prev" onclick="previous()">
       &#8249;
     </button>
-    <button class="slide-arrow" id="slide-arrow-next">
+    <button role="button" class="slide-arrow" id="slide-arrow-next" onclick="next()">
       &#8250;
     </button>
     <div class="closeLightBoxModal" onclick="closeLightBoxModal()">
-      <img class="imgCloseLightBoxModal" src="assets/icons/Vector.png">
+      <img class="imgCloseLightBoxModal" src="assets/icons/Vector.png" alt="Fermer le carroussel">
     </div>
     <ul class="slides-container" id="slides-container">
     </ul>
   </section>
 
   <!-- Formulaire de contact -->
-  <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form id="contact_form" name="contact_form" method="post" action="#">
-        <div>
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" minlength="3" maxlength="25" size="14" required />
-        </div>
-        <div>
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" minlength="2" maxlength="25" size="14" required />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" size="30" name="email" required />
-        </div>
-        <div>
-          <label for="message">Votre message</label>
-          <input class="message" type="textarea" id="message" name="message" rows="5" cols="33" required />
-        </div>
-        <button type="submit" class="contact_button">Envoyer</button>
-      </form>
-    </div>
-  </div>
+  <section id="contact_modal" role="dialog" aria-labelledby="contact_modal" aria-hidden="true" aria-modal="true">
+    <form tabindex="1" id="contact_form" name="contact_form" method="post" action="#" class="modal">
+      <fieldset>
+        <legend tabindex="2">
+          <p id="contact-form-legend"></p>
+          <img tabindex="12" src="assets/icons/close.svg" onclick="closeModal()" class="imgCloseModal"
+            alt="Fermer la modale" />
+        </legend>
+      </fieldset>
+      <fieldset>
+        <label tabindex="3" for="firstName">Prénom</label>
+        <input tabindex="4" type="text" id="firstName" placeholder="Farid" aria-labelledby="firstName" name="firstName"
+          minlength="3" maxlength="25" size="14" required aria-required=true class="valueInput" />
+        <label tabindex="5" for="lastName">Nom</label>
+        <input tabindex="6" type="text" id="lastName" placeholder="Bouras" aria-labelledby="lastName" name="lastName"
+          minlength="2" maxlength="25" size="14" required aria-required=true class="valueInput" />
+        <label tabindex="7" for="email">Email</label>
+        <input tabindex="8" type="email" id="email" placeholder="farid.bouras@gmail.com" aria-labelledby="email"
+          size="30" name="email" required aria-required=true class="valueInput" />
+      </fieldset>
+      <fieldset>
+        <label tabindex="9" for="message">Votre message</label>
+        <input tabindex="10" class="message" type="textarea" id="message"
+          placeholder="Je suis très intéressé par votre travail, pourriez-vous m'indiquer vos disponibilités..."
+          aria-labelledby="message" name="message" rows="5" cols="33" required aria-required=true />
+      </fieldset>
+      <fieldset>
+        <button tabindex="11" type="submit" class="submit_form"
+          aria-depressedby="Envoyer le formulaire">Envoyer</button>
+      </fieldset>
+    </form>
+  </section>
+
+  <!-- Api -->
+  <script src="./scripts/api/Api.js"></script>
+
   <!-- Factories -->
   <script src="./scripts/factories/photographer.js"></script>
   <script src="./scripts/factories/media.js"></script>
-
 
   <!-- Models -->
   <script src="scripts/models/PhotographerModel.js"></script>
@@ -90,13 +99,12 @@
   <script src="./scripts/templates/PhotographerMediaCard.js"></script>
   <script src="./scripts/templates/PhotographerMediaSlide.js"></script>
 
-  <!-- Api -->
-  <script src="./scripts/api/Api.js"></script>
-  <script src="./scripts/pages/photographer.js"></script>
-
   <!-- Utils -->
   <script src="./scripts/utils/lightbox-modal.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
+
+  <!-- Entry point -->
+  <script src="./scripts/pages/photographer.js"></script>
 
 </body>
 

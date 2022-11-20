@@ -63,6 +63,49 @@
   cursor: pointer;
 }
 
+.submit_form {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+legend {
+  font-weight: 500;
+  display: flex;
+  font-size: 64px;
+  /* align-items: center; */
+}
+
+#contact-form-legend {
+  margin: 0;
+  width: 75%;
+}
+
+.valueInput {
+  font-size: 25px;
+  padding: 5px 20px;
+}
+
+.imgCloseModal {
+  position: absolute;
+  right: 40px;
+  cursor: pointer;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -78,6 +121,10 @@
   top: 25%;
   z-index: 1;
 }
+
+/* .newClass {
+  content-visibility: hidden;
+} */
 
 .modal header {
   justify-content: space-between;
@@ -115,7 +162,7 @@ form div {
 }
 
 form input {
-  width: 100%;
+  width: 96%;
   height: 68px;
   border: none;
   border-radius: 5px;
@@ -130,11 +177,12 @@ img.img_profil {
 }
 
 .message {
-  width: 100%;
-  max-width: 760px;
+  width: 96%;
   min-height: 150px;
   max-height: 300px;
   border-radius: 5px;
+  font-size: 25px;
+  padding: 5px 20px;
 }
 
 /*Media */
@@ -158,6 +206,11 @@ img.img_profil {
   height: 90%;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.container_title_like {
+  display: flex;
+  justify-content: space-between;
 }
 
 .media_card_videoArticle {

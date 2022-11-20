@@ -33,12 +33,20 @@ class PhotographerMediaCard {
     likesArticle.classList.add("media_card_titleArticle");
 
     const mediaCardInDOM = `
-    <video controls class="media_card_videoArticle media">
+    <video controls class="media_card_videoArticle media" tabindex="9">
     <source src="${media.media}"
             type="video/mp4">
     </video>
-        <p class="media_card_titleAndLikesArticle">${media.title}<span class="like"">${media.likes}❤️</span></p>
-      `;
+    <div class="container_title_like">
+      <div tabindex="9">
+        <p class="media_card_titleAndLikesArticle">${media.title}</p>
+      </div>
+      <div tabindex="9">
+        <span class="like">${media.likes}❤️</span>
+      </div>
+    </div>
+    `;
+
     article.innerHTML = mediaCardInDOM;
     return article;
   }
@@ -63,10 +71,19 @@ class PhotographerMediaCard {
     const mediaCardInDOM = `
     <img
       class="media_card_imgArticle media"
-      alt=${media.title}
-      src=${media.media}
+      alt="${media.title}"
+      src="${media.media}"
+      tabindex="9"
     >
-    <p class="media_card_titleAndLikesArticle">${media.title}<span class="like">${media.likes}❤️</span></p>`;
+    <div class="container_title_like">
+      <div tabindex="9">
+        <p class="media_card_titleAndLikesArticle">${media.title}</p>
+      </div>
+      <div tabindex="9">
+        <span class="like">${media.likes}❤️</span>
+      </div>
+    </div>
+    `;
 
     article.innerHTML = mediaCardInDOM;
     return article;

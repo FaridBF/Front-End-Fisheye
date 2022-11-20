@@ -42,8 +42,21 @@ header {
   object-fit: cover;
 }
 
+.container_descriptif_profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .img_profil {
   border-radius: 100%;
+}
+
+a#photographer_id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 }
 
 .title_profil {
