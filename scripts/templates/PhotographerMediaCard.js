@@ -79,8 +79,8 @@ class PhotographerMediaCard {
       <div tabindex="9">
         <p class="media_card_titleAndLikesArticle">${media.title}</p>
       </div>
-      <div tabindex="9">
-        <span class="like">${media.likes}❤️</span>
+      <div>
+        <span tabindex="9" aria-describedby="like" class="like">${media.likes}❤️</span>
       </div>
     </div>
     `;

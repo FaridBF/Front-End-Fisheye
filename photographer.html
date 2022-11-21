@@ -10,9 +10,9 @@
   <title>Fisheye - photographe </title>
 </head>
 
-<body id="body">
-  <header>
-    <a href="http://127.0.0.1:5500/"> <img src="assets/images/logo.png" class="logo" alt="illustration Fisheye"
+<body>
+  <header id="header">
+    <a href="http://127.0.0.1:5500/"> <img src="assets/images/logo.png" class="logo" alt="Lien vers la page d'accueil"
         tabindex="1" />
     </a>
   </header>
@@ -21,30 +21,34 @@
     </div>
     <!-- select de tri avec 3 filtres -->
     <label for="filter-select" tabindex="7">Trier par</label>
-    <select name="filters" id="filter-select" class="container-filter-select" tabindex="8">
-      <option class="filter-by-popularity" value="popularity">Popularité</option>
-      <option class="filter-by-date" value="date">Date</option>
-      <option class="filter-by-title" value="title">Titre</option>
+    <select name="filters" id="filter-select" class="container-filter-select" tabindex="8" aria-expanded="true"
+      role="listbox">
+      <option class="filter-by-popularity" value="popularity" aria-expanded="false">Popularité</option>
+      <option class="filter-by-date" value="date" aria-expanded="false">Date</option>
+      <option class="filter-by-title" value="title" aria-expanded="false">Titre</option>
     </select>
     <div class="media-card-container"></div>
 
     <!-- modal des likes et du prix jour d'un photographe -->
-    <div class="modalPriceAndLiked" tabindex="6"><span class="totalLikes"></span><span>🖤</span><span
-        class="pricePhotographer"></span></div>
+    <div class="modalPriceAndLiked" tabindex="6"><span class="totalLikes"
+        title="total des coeurs de l'ensemble des images"></span><span>🖤</span><span class="pricePhotographer"
+        aria-describedby="prix du photographe"></span></div>
   </main>
 
   <!-- gestion afficher/pas afficher -->
-  <section class="slider-wrapper" id="lightBoxModal" aria-modal="true">
-    <button role="button" class="slide-arrow" id="slide-arrow-prev" onclick="previous()">
+  <section tabindex="1" class="slider-wrapper" id="lightBoxModal" aria-modal="true">
+    <button tabindex="4" type="button" class="slide-arrow" id="slide-arrow-prev"
+      aria-label="passer à la précédente image">
       &#8249;
     </button>
-    <button role="button" class="slide-arrow" id="slide-arrow-next" onclick="next()">
+    <button tabindex="5" type="button" class="slide-arrow" id="slide-arrow-next"
+      aria-label="passer à la prochaine image">
       &#8250;
     </button>
-    <div class="closeLightBoxModal" onclick="closeLightBoxModal()">
-      <img class="imgCloseLightBoxModal" src="assets/icons/Vector.png" alt="Fermer le carroussel">
+    <div tabindex="6" role="button" class="closeLightBoxModal" onclick="closeLightBoxModal()">
+      <img tabclass="imgCloseLightBoxModal" src="assets/icons/Vector.png" alt="Fermer le carroussel">
     </div>
-    <ul class="slides-container" id="slides-container">
+    <ul class="slides-container" id="slides-container" role="listbox">
     </ul>
   </section>
 
@@ -76,8 +80,7 @@
           aria-labelledby="message" name="message" rows="5" cols="33" required aria-required=true />
       </fieldset>
       <fieldset>
-        <button tabindex="11" type="submit" class="submit_form"
-          aria-depressedby="Envoyer le formulaire">Envoyer</button>
+        <button tabindex="11" type="submit" class="submit_form" aria-label="Envoyer le formulaire">Envoyer</button>
       </fieldset>
     </form>
   </section>

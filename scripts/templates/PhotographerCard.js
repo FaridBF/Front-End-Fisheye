@@ -30,7 +30,7 @@ class PhotographerCard {
 
           <div tabindex="0" aria-label="Aller sur le descriptif de ce photographe" class="container_descriptif_profil">
             <p class="location_profil">${this._photographer.location}</p>
-            <p class="tagline_profil">${this._photographer.tagline}</p>
+            <cite class="tagline_profil">${this._photographer.tagline}</cite>
               <span class="price_profil">${this._photographer.price}€/jour</span>
           </div>
       </div>
@@ -47,24 +47,12 @@ class PhotographerCard {
    * @returns photographerSelectedCard: template HTML à ajouter dans le DOM
    */
   getPhotographerSelectedCard() {
-    const a = document.getElementById("photographer_id");
-    const img = document.createElement("img");
-    img.classList.add("img_profil");
-    const h1 = document.createElement("h1");
-    h1.classList.add("title_profil");
-    const p = document.createElement("p");
-    p.classList.add("location_profil");
-    const p2 = document.createElement("p");
-    p2.classList.add("tagline_profil");
-    const span = document.createElement("span");
-    span.classList.add("price_profil");
-
     const photographerSelectedCard = `
       <div class="photographer_container">
           <h1 tabindex="2" class="photographer_title_profil">${this._photographer.name}</h1>
         <div tabindex="3"  class="photographer_details">
           <p class="photographer_location_profil">${this._photographer.location}</p>
-          <p class="photographer_tagline_profil">${this._photographer.tagline}</p>
+          <cite class="photographer_tagline_profil">${this._photographer.tagline}</cite>
         </div>
       </div>
       <button class="contact_button" onclick="displayModal()" tabindex="4">Contactez-moi</button>

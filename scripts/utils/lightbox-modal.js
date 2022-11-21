@@ -6,6 +6,8 @@ function displayLightBoxModal() {
   lightBoxModal.style.display = "block";
   const mainContent = document.getElementById("main");
   mainContent.style.display = "none";
+  const header = document.getElementById("header");
+  header.style.display = "none";
 }
 
 /**
@@ -16,4 +18,6 @@ function closeLightBoxModal() {
   modal.style.display = "none";
   const mainContent = document.getElementById("main");
   mainContent.style.display = "block";
+  const header = document.getElementById("header");
+  header.style.display = "block";
 }
