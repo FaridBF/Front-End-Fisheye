@@ -20,6 +20,13 @@ function displayModal() {
     if (child !== modal) child.setAttribute("inert", true);
   });
 
+  // Ecouteur d'évènement "Escape" quand la modale est ouverte, pour la fermer
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      closeModal();
+    }
+  });
+
   // création du filtre
   const mainContentFilter = document.getElementById("main");
   mainContentFilter.style.filter = "blur(3px)";
