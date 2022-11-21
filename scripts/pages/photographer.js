@@ -84,37 +84,48 @@ class Photographer {
   }
 
   /**
-   * Ajout de l'écouteur d'évènements "like" sur les médias
+   * Action de "liker" un media
+   * @param {object} mediaToLike: élément du DOM représente le span pour liker un media
+   */
+  addLike(mediaToLike) {
+    if (mediaToLike.classList.contains("liked")) {
+      alert("Vous avez déjà aimé ce contenu");
+    } else {
+      // j'incrémente les likes d'une image ou une vidéo
+      mediaToLike.innerHTML = `${parseInt(mediaToLike.textContent) + 1}`;
+      mediaToLike.classList.add("liked");
+      //j'incrémente le total des likes
+      const totalLikes = document.querySelector(".totalLikes");
+      totalLikes.innerHTML = `${parseInt(totalLikes.textContent) + 1}`;
+    }
+  }
+
+  /**
+   * Ajout des écouteurs d'évènements "like" sur les médias
+   * (au clic ou en tapant sur "entrée")
    */
   addLikeEventOnCards() {
-    const valueArray = [];
-    const newArray = [];
+    const picturesLikesList = []; // chq élément est le total de likes d'une photo
     const mediasToLike = document.querySelectorAll(".like");
     mediasToLike.forEach((mediaToLike) => {
       mediaToLike.addEventListener("click", () => {
-        if (mediaToLike.classList.contains("liked")) {
-          alert("Vous avez déjà aimé ce contenu");
-        } else {
-          // j'incrémente les likes d'une image ou une vidéo
-          mediaToLike.innerHTML = `${parseInt(mediaToLike.textContent) + 1}`;
-          mediaToLike.classList.add("liked");
-          //j'incrémente le total des likes
-          const totalLikes = document.querySelector(".totalLikes");
-          totalLikes.innerHTML = `${parseInt(totalLikes.textContent) + 1}`;
+        this.addLike(mediaToLike);
+      });
+      mediaToLike.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          this.addLike(mediaToLike);
         }
       });
       const totalLikes = parseInt(mediaToLike.textContent);
-      valueArray.push(totalLikes);
+      picturesLikesList.push(totalLikes);
     });
-    const initialValue = 0;
-    const sumWithInitial = valueArray.reduce(
+    const initialValueOfTotalLikes = 0;
+    const sumOfTotalPhotographerLikes = picturesLikesList.reduce(
       (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
+      initialValueOfTotalLikes
     );
-    newArray.push(sumWithInitial);
-    // affichage total des likes dans la modal likesMedia
     const totalLikes = document.querySelector(".totalLikes");
-    totalLikes.innerHTML = `${parseInt(newArray[0])}`;
+    totalLikes.innerHTML = `${sumOfTotalPhotographerLikes}`;
   }
 
   /**
