@@ -42,7 +42,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 23px;
+  line-height: 40px;
   color: #525252;
 }
 
@@ -211,6 +211,7 @@ img.img_profil {
 .container_title_like {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .media_card_videoArticle {
