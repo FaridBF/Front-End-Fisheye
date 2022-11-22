@@ -11,6 +11,7 @@ class Photographer {
     this.photographerId = new URL(location.href).searchParams.get("id");
     this.photographersApi = new PhotographersApi("./data/photographers.json");
     this.photographerDataMediasArray = [];
+    // this.currentSlides = 0;
   }
 
   async getMediasById(photographerId) {
@@ -182,15 +183,22 @@ class Photographer {
         photographerMediaSlide.addMediaSlideToCarrousselDOM();
       this.slidesContainer.appendChild(mediaSlideInDOM);
     });
+    currentSlides = i;
+    console.log(" currentSlides", currentSlides);
+    console.log(" i", i);
+
     displayCurrentSlides(i);
   }
 }
+
+currentSlides = 0;
 
 /**
  * Gestion de l'affichage de la slide courante sur le carroussel
  * @param {number} currentIndex
  */
 function displayCurrentSlides(currentIndex) {
+  console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
   let slides = document.querySelectorAll(".slide");
   // boucler sur les slides
@@ -199,30 +207,37 @@ function displayCurrentSlides(currentIndex) {
     if (currentIndex == counter) {
       slide.style.display = "block";
     }
-  });
-
-  // Gestion du clique sur le bouton "précédent" du carroussel
-  const prevButton = document.getElementById("slide-arrow-prev");
-  prevButton.addEventListener("click", () => {
-    if (currentIndex === 0) {
-      console.log("ce n est pas possible");
-    } else {
-      displayCurrentSlides(currentIndex - 1);
-    }
-  });
-
-  // Gestion du clique sur le bouton "suivant" du carroussel
-  const nextButton = document.getElementById("slide-arrow-next");
-  nextButton.addEventListener("click", () => {
-    const slides = document.querySelectorAll(".slide");
-    if (currentIndex === slides.length - 1) {
-      console.log("ce n est pas possible");
-    } else {
-      displayCurrentSlides(currentIndex + 1);
-    }
+    // console.log("counter", counter);
   });
 }
 
+// Gestion du clique sur le bouton "précédent" du carroussel
+const prevButton = document.getElementById("slide-arrow-prev");
+prevButton.addEventListener("click", () => {
+  console.log("this.currentSlides", this.currentSlides);
+  if (this.currentSlides === 0) {
+    const slides = document.querySelectorAll(".slide");
+    currentSlides = slides.length - 1;
+  } else {
+    currentSlides--;
+    console.log("currentSlides--", currentSlides);
+  }
+  displayCurrentSlides(currentSlides);
+});
+
+// Gestion du clique sur le bouton "suivant" du carroussel
+const nextButton = document.getElementById("slide-arrow-next");
+nextButton.addEventListener("click", () => {
+  const slides = document.querySelectorAll(".slide");
+  console.log("this.currentSlides", this.currentSlides);
+  if (this.currentSlides === slides.length - 1) {
+    currentSlides = 0;
+  } else {
+    currentSlides++;
+    console.log("currentSlides++", currentSlides);
+  }
+  displayCurrentSlides(currentSlides);
+});
 /**
  * Trier par likes (popularité) : par défaut
  * @param {array} photographerDataMediasArray
