@@ -13,6 +13,9 @@ export default function displayLightBoxModal() {
 /**
  * Permet de fermer la modale du carroussel
  */
+const buttonCloseLightBoxModal = document.querySelector(".closeLightBoxModal");
+buttonCloseLightBoxModal.addEventListener("click", () => closeLightBoxModal());
+
 export function closeLightBoxModal() {
   const modal = document.getElementById("lightBoxModal");
   modal.style.display = "none";

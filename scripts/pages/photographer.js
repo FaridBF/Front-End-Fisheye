@@ -221,13 +221,13 @@ export function displayCurrentSlides(currentIndex) {
 // Gestion du clique sur le bouton "précédent" du carroussel
 const prevButton = document.getElementById("slide-arrow-prev");
 prevButton.addEventListener("click", () => {
-  console.log("this.currentSlides", this.currentSlides);
-  if (this.currentSlides === 0) {
+  // console.log("this.currentSlides", this.currentSlides);
+  if (currentSlides === 0) {
     const slides = document.querySelectorAll(".slide");
     currentSlides = slides.length - 1;
   } else {
     currentSlides--;
-    console.log("currentSlides--", currentSlides);
+    // console.log("currentSlides--", currentSlides);
   }
   displayCurrentSlides(currentSlides);
 });
@@ -236,12 +236,12 @@ prevButton.addEventListener("click", () => {
 const nextButton = document.getElementById("slide-arrow-next");
 nextButton.addEventListener("click", () => {
   const slides = document.querySelectorAll(".slide");
-  console.log("this.currentSlides", this.currentSlides);
-  if (this.currentSlides === slides.length - 1) {
+  // console.log("this.currentSlides", this.currentSlides);
+  if (currentSlides === slides.length - 1) {
     currentSlides = 0;
   } else {
     currentSlides++;
-    console.log("currentSlides++", currentSlides);
+    // console.log("currentSlides++", currentSlides);
   }
   displayCurrentSlides(currentSlides);
 });
