@@ -1,7 +1,7 @@
 /**
  * Classe représentant la "card" du photographe avec ses informations
  */
-class PhotographerCard {
+export default class PhotographerCard {
   // reprend les attribut de Photographer
   constructor(photographer) {
     this._photographer = photographer;

@@ -2,7 +2,7 @@
  * Classe représentant le modèle Video
  * et contenant des getters afin d'accéder au propriétés
  */
-class VideoModel {
+export default class VideoModel {
   constructor(data) {
     // on va renseigner les propriétés d'instance de l'objet
     this._date = data.date;
@@ -41,9 +41,5 @@ class VideoModel {
 
   get price() {
     return this._price;
-  }
-
-  get title() {
-    return this._title;
   }
 }

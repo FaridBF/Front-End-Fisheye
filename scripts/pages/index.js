@@ -1,3 +1,6 @@
+import PhotographersApi from "../api/Api.js";
+import photographerFactory from "../factories/photographer.js";
+import PhotographerCard from "../templates/PhotographerCard.js";
 /**
  * Classe représentant la gestion de la page principale
  * avec la liste des photographes

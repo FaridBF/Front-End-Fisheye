@@ -20,7 +20,7 @@ class Api {
  * Classe permettant de récupérer les données des photographes
  * hérite de la classe API
  */
-class PhotographersApi extends Api {
+export default class PhotographersApi extends Api {
   constructor(url) {
     super(url);
   }
@@ -33,7 +33,7 @@ class PhotographersApi extends Api {
     const data = await this.get();
     // récup uniquement de l'objet via l'ID
     const result = data.photographers.filter((photographer) => {
-      return photographer.id == parseInt(photographerId);
+      return photographer.id === parseInt(photographerId);
     });
     return result;
   }
@@ -47,7 +47,7 @@ class PhotographersApi extends Api {
     // récup tableau des medias
     const dataMedias = await this.get();
     const resultMedias = dataMedias.media.filter((media) => {
-      return media.photographerId == parseInt(photographerId);
+      return media.photographerId === parseInt(photographerId);
     });
     return resultMedias;
   }

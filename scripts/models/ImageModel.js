@@ -2,7 +2,7 @@
  * Classe représentant le modèle Image
  * et contenant des getters afin d'accéder au propriétés
  */
-class ImageModel {
+export default class ImageModel {
   constructor(data) {
     // on va renseigner les propriétés d'instance de l'objet
     this._date = data.date;
@@ -35,8 +35,5 @@ class ImageModel {
   }
   get price() {
     return this._price;
-  }
-  get title() {
-    return this._title;
   }
 }

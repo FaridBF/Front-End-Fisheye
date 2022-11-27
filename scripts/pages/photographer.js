@@ -1,3 +1,10 @@
+import PhotographersApi from "../api/Api.js";
+import photographerFactory from "../factories/photographer.js";
+import PhotographerMediaCard from "../templates/PhotographerMediaCard.js";
+import displayLightBoxModal from "../utils/lightbox-modal.js";
+import photographerMediaFactory from "../factories/media.js";
+import PhotographerMediaSlide from "../templates/PhotographerMediaSlide.js";
+import PhotographerCard from "../templates/PhotographerCard.js";
 /**
  * Classe représentant la gestion de la page du photographe sélectioné
  * avec son portfolio
@@ -191,20 +198,20 @@ class Photographer {
   }
 }
 
-currentSlides = 0;
+let currentSlides = 0;
 
 /**
  * Gestion de l'affichage de la slide courante sur le carroussel
  * @param {number} currentIndex
  */
-function displayCurrentSlides(currentIndex) {
+export function displayCurrentSlides(currentIndex) {
   console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
   let slides = document.querySelectorAll(".slide");
   // boucler sur les slides
   slides.forEach((slide, counter) => {
     slide.style.display = "none";
-    if (currentIndex == counter) {
+    if (currentIndex === counter) {
       slide.style.display = "block";
     }
     // console.log("counter", counter);

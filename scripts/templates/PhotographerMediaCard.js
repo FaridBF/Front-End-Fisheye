@@ -1,7 +1,7 @@
 /**
  * Classe représentant la "card" du media du photographe
  */
-class PhotographerMediaCard {
+export default class PhotographerMediaCard {
   constructor(media, mediaType) {
     this._media = media;
     this._mediaType = mediaType;

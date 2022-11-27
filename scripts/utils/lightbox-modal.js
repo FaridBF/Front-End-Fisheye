@@ -1,7 +1,7 @@
 /**
  * Permet d'afficher la modale du carroussel
  */
-function displayLightBoxModal() {
+export default function displayLightBoxModal() {
   const lightBoxModal = document.getElementById("lightBoxModal");
   lightBoxModal.style.display = "block";
   const mainContent = document.getElementById("main");
@@ -13,7 +13,7 @@ function displayLightBoxModal() {
 /**
  * Permet de fermer la modale du carroussel
  */
-function closeLightBoxModal() {
+export function closeLightBoxModal() {
   const modal = document.getElementById("lightBoxModal");
   modal.style.display = "none";
   const mainContent = document.getElementById("main");

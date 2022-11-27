@@ -2,7 +2,7 @@
  * Classe représentant le modèle Photographe
  * et contenant des getters afin d'accéder au propriétés
  */
-class PhotographerModel {
+export default class PhotographerModel {
   constructor(data) {
     // on va renseigner les propriétés d'instance de l'objet
     this._name = data.name;

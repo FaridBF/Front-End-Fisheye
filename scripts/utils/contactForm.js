@@ -4,7 +4,7 @@ let previousActiveElement;
 /**
  * Permet d'afficher la modale de contact
  */
-function displayModal() {
+export function displayModal() {
   previousActiveElement = document.activeElement; // conserve le dernier élément parcouru avant ouverture dialog
 
   const photographerName = document.querySelector(

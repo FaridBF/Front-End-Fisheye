@@ -1,7 +1,7 @@
 /**
  * Classe représentant la "slide" du media du photographe sur le carroussel
  */
-class PhotographerMediaSlide {
+export default class PhotographerMediaSlide {
   constructor(media, mediaType) {
     this._media = media;
     this._mediaType = mediaType;
