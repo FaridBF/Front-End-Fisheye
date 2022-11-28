@@ -1,12 +1,16 @@
-// Représente le dernier élément parcourur avant l'ouverture de la modale
+// Représente le dernier élément parcouru avant l'ouverture de la modale
 let previousActiveElement;
 
 /**
  * Permet d'afficher la modale de contact
  */
+const contactForm = document.querySelector(".photograph-header");
+if (contactForm) {
+  contactForm.addEventListener("click", () => displayModal());
+}
+
 export function displayModal() {
   previousActiveElement = document.activeElement; // conserve le dernier élément parcouru avant ouverture dialog
-
   const photographerName = document.querySelector(
     ".photographer_title_profil"
   ).textContent;
@@ -53,6 +57,10 @@ form.addEventListener("submit", (e) => {
 /**
  * Permet de fermer la modale de contact
  */
+const closeModalContactForm = document.querySelector(".imgCloseModal");
+if (closeModalContactForm) {
+  closeModalContactForm.addEventListener("click", () => closeModal());
+}
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
