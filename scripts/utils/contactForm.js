@@ -61,6 +61,13 @@ const closeModalContactForm = document.querySelector(".imgCloseModal");
 if (closeModalContactForm) {
   closeModalContactForm.addEventListener("click", () => closeModal());
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === 13 && closeModalContactForm.style.display === "block") {
+    closeModal();
+  }
+});
+
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";

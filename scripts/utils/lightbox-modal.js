@@ -8,6 +8,12 @@ export default function displayLightBoxModal() {
   mainContent.style.display = "none";
   const header = document.getElementById("header");
   header.style.display = "none";
+  // Ecouteur d'évènement "Escape" quand le caroussel est ouvert afin d'être en mesure de le fermer
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightBoxModal.style.display === "block") {
+      closeLightBoxModal();
+    }
+  });
 }
 
 /**
@@ -15,6 +21,11 @@ export default function displayLightBoxModal() {
  */
 const buttonCloseLightBoxModal = document.querySelector(".closeLightBoxModal");
 buttonCloseLightBoxModal.addEventListener("click", () => closeLightBoxModal());
+buttonCloseLightBoxModal.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    closeLightBoxModal();
+  }
+});
 
 export function closeLightBoxModal() {
   const modal = document.getElementById("lightBoxModal");

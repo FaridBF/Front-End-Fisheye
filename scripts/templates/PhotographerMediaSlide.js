@@ -34,7 +34,7 @@ export default class PhotographerMediaSlide {
       <source src="${media.media}"
               type="video/mp4">
       </video>
-      <p tabindex="3" class="media_title" aria-labelledby="${media.title}">${media.title}</p>
+      <p tabindex="3" class="media_title" aria-label="${media.title}">${media.title}</p>
       `;
     li.innerHTML = mediaSlideInDOM;
     return li;
@@ -55,7 +55,7 @@ export default class PhotographerMediaSlide {
         alt="${media.title}"
         src="${media.media}"
       >
-      <p tabindex="3" class="media_title" aria-labelledby="${media.title}">${media.title}</p>
+      <p tabindex="3" class="media_title" aria-label="${media.title}">${media.title}</p>
       `;
     li.innerHTML = mediaSlideInDOM;
     return li;
