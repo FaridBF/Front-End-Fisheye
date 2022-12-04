@@ -96,8 +96,23 @@ legend {
 }
 
 .valueInput {
-  font-size: 25px;
   padding: 5px 20px;
+}
+
+input#firstName {
+  font-size: 20px;
+}
+
+input#lastName {
+  font-size: 20px;
+}
+
+input#email {
+  font-size: 20px;
+}
+
+input#message {
+  font-size: 20px;
 }
 
 .imgCloseModal {
@@ -118,13 +133,9 @@ legend {
   margin: auto;
   position: absolute;
   left: 25%;
-  top: 25%;
+  top: 10%;
   z-index: 1;
 }
-
-/* .newClass {
-  content-visibility: hidden;
-} */
 
 .modal header {
   justify-content: space-between;
