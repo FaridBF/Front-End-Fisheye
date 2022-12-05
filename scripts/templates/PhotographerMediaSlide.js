@@ -33,8 +33,12 @@ export default class PhotographerMediaSlide {
       controls >
       <source src="${media.media}"
               type="video/mp4">
+      <track src="../assets/medias/video.vtt"
+      label="Français" kind="subtitles" srclang="fr">
       </video>
-      <p tabindex="3" class="media_title" aria-label="${media.title}">${media.title}</p>
+      <div aria-label="${media.title}">      
+        <p tabindex="3" class="media_title">${media.title}</p>
+      </div>
       `;
     li.innerHTML = mediaSlideInDOM;
     return li;
@@ -55,7 +59,9 @@ export default class PhotographerMediaSlide {
         alt="${media.title}"
         src="${media.media}"
       >
-      <p tabindex="3" class="media_title" aria-label="${media.title}">${media.title}</p>
+      <div aria-label="${media.title}">      
+        <p tabindex="3" class="media_title">${media.title}</p>
+      </div>
       `;
     li.innerHTML = mediaSlideInDOM;
     return li;

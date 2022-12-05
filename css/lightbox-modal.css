@@ -87,6 +87,11 @@ video.slide_content {
   object-fit: cover;
 }
 
+track {
+  color: #fff;
+  background-color: #000;
+}
+
 ul#slides-container {
   width: 1500px;
   height: 95%;
