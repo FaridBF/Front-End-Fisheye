@@ -4,9 +4,21 @@ let previousActiveElement;
 /**
  * Permet d'afficher la modale de contact
  */
-const contactForm = document.querySelector(".photograph-header");
-if (contactForm) {
-  contactForm.addEventListener("click", () => displayModal());
+export default function initModal() {
+  const contactForm = document.querySelector(".openContactForm");
+  console.log("contactform", contactForm);
+  if (contactForm) {
+    contactForm.addEventListener("click", () => displayModal());
+  }
+
+  // const closeModalViaTab = document.querySelector(".imgCloseModal");
+  // closeModalViaTab.addEventListener("keydown", (e) => {
+  //   console.log("closemodalviatab", e);
+  //   if (e.key === "Enter") {
+  //     console.log("e", e);
+  //     closeModal();
+  //   }
+  // });
 }
 
 export function displayModal() {
@@ -62,15 +74,12 @@ if (closeModalContactForm) {
   closeModalContactForm.addEventListener("click", () => closeModal());
 }
 
-document.addEventListener("keydown", (event) => {
-  if (event.code === 13 && closeModalContactForm.style.display === "block") {
-    closeModal();
-  }
-});
-
 function closeModal() {
   const modal = document.getElementById("contact_modal");
+  console.log("modal", modal);
+
   modal.style.display = "none";
+  console.log("modal2", modal);
 
   const main = document.getElementById("main");
   main.style.display = "block";
@@ -84,6 +93,6 @@ function closeModal() {
     if (child !== modal) child.removeAttribute("inert");
   });
 
-  // Retourner au dernier élément parcourur avant l'ouverture de la modale
+  // Retourner au dernier élément parcouru avant l'ouverture de la modale
   previousActiveElement.focus();
 }

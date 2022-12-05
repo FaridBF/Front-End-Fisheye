@@ -5,6 +5,7 @@ import displayLightBoxModal from "../utils/lightbox-modal.js";
 import photographerMediaFactory from "../factories/media.js";
 import PhotographerMediaSlide from "../templates/PhotographerMediaSlide.js";
 import PhotographerCard from "../templates/PhotographerCard.js";
+import initModal from "../utils/contactForm.js";
 /**
  * Classe représentant la gestion de la page du photographe sélectioné
  * avec son portfolio
@@ -39,6 +40,7 @@ class Photographer {
     this.addClickEventOnCards();
     this.addLikeEventOnCards();
     this.addClickEventOnFilters();
+    initModal();
   }
 
   /**
