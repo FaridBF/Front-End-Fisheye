@@ -54,7 +54,7 @@ export default class PhotographerCard {
           <cite class="photographer_tagline_profil">${this._photographer.tagline}</cite>
         </div>
       </div>
-      <button class="openContactForm" tabindex="4">Contactez-moi</button>
+      <button id="btnOpenContactForm" class="openContactForm" tabindex="4">Contactez-moi</button>
       <a href="http://127.0.0.1:5500/photographer.html?id=${this._photographer._id}" id="photographer_id" class="photographer_id" tabindex="5">
         <img 
           class="img_profil"

@@ -4,6 +4,8 @@
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/lightbox-modal.css" rel="stylesheet" type="text/css" />
+  <link href="css/modalLike.css" rel="stylesheet" type="text/css" />
+
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -47,7 +49,7 @@
       &#8250;
     </button>
     <div tabindex="6" role="button" class="closeLightBoxModal">
-      <img tabclass="imgCloseLightBoxModal" src="assets/icons/Vector.png" alt="Fermer le carroussel">
+      <img class="imgCloseLightBoxModal" src="assets/icons/Vector.png" alt="Fermer le carroussel">
     </div>
     <ul class="slides-container" id="slides-container" role="listbox">
     </ul>
@@ -85,6 +87,18 @@
     </form>
   </section>
 
+  <!-- Modale de contenu déjà liké -->
+  <div class="modal-like-container">
+    <div class="overlay modal-trigger"></div>
+    <div class="modal-like" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
+      <button id="close-like-modal" aria-label="Fermer la modal" class="close-modal-like modal-trigger"
+        tabindex="0">X</button>
+      <!-- <h1 id="modalTitle">Like</h1> -->
+      <p id="dialogDesc">Vous avez déjà aimé ce contenu</p>
+    </div>
+  </div>
+  </div>
+
   <!-- Api -->
   <script src="./scripts/api/Api.js" type="module"></script>
 
@@ -110,6 +124,7 @@
 
   <!-- Utils -->
   <script src="./scripts/utils/lightbox-modal.js" type="module"></script>
+
 </body>
 
 </html>

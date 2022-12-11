@@ -4,9 +4,7 @@ let previousElement = null;
  * Permet d'afficher la modale du carroussel
  */
 export default function displayLightBoxModal() {
-  //////////////////////////
   previousElement = document.activeElement || document.body; // conserve le dernier élément parcouru avant ouverture dialog
-  ///////////////////////
   const lightBoxModal = document.getElementById("lightBoxModal");
   lightBoxModal.style.display = "block";
   const mainContent = document.getElementById("main");
@@ -39,15 +37,7 @@ export function closeLightBoxModal() {
   mainContent.style.display = "block";
   const header = document.getElementById("header");
   header.style.display = "block";
-  ///////////////////////////////////////////
   // Retourner au dernier élément parcouru avant l'ouverture de la modale
   previousElement.focus();
   previousElement = null;
 }
-
-// const modal = document.querySelector(".media_card_article");
-// modal.addEventListener("keydown", (event) => {
-//   if (event.keyCode === 13) {
-//     displayLightBoxModal();
-//   }
-// });

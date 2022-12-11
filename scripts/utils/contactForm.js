@@ -1,5 +1,4 @@
 // Représente le dernier élément parcouru avant l'ouverture de la modale
-// let previousActiveElement;
 let previousElement = null;
 
 /**
@@ -10,26 +9,11 @@ export default function initModal() {
   if (contactForm) {
     contactForm.addEventListener("click", () => displayModal());
   }
-  // const closeModalViaTab = document.querySelector(".imgCloseModal");
-  // closeModalViaTab.addEventListener("keydown", (event) => {
-  //   if (event.keyCode === 13) {
-  //     const modal = document.getElementById("contact_modal");
-  //     modal.style.display = "none";
-  //     // annulation du filtre
-  //     const mainContentFilter = document.getElementById("main");
-  //     mainContentFilter.style.filter = "none";
-
-  //     Array.from(document.body.children).forEach((child) => {
-  //       if (child !== modal) child.removeAttribute("inert");
-  //     });
-  //   }
-  // });
 }
 
 export function displayModal() {
   previousElement = document.activeElement || document.body; // conserve le dernier élément parcouru avant ouverture dialog
 
-  // previousActiveElement = document.activeElement; // conserve le dernier élément parcouru avant ouverture dialog
   const photographerName = document.querySelector(
     ".photographer_title_profil"
   ).textContent;
@@ -96,11 +80,11 @@ function closeModal() {
     if (child !== modal) child.removeAttribute("inert");
   });
   // Retourner au dernier élément parcouru avant l'ouverture de la modale
-  // previousActiveElement.focus();
   previousElement.focus();
   previousElement = null;
 }
 
+// Cloturer la modale du formulaire de contact via le clavier
 const closeModalViaTab = document.querySelector(".imgCloseModal");
 closeModalViaTab.addEventListener("keydown", (event) => {
   if (event.keyCode === 13) {

@@ -87,7 +87,6 @@ legend {
   font-weight: 500;
   display: flex;
   font-size: 64px;
-  /* align-items: center; */
 }
 
 #contact-form-legend {
@@ -178,8 +177,6 @@ form input {
   border: none;
   border-radius: 5px;
 }
-
-/*New class à trier */
 
 img.img_profil {
   height: 192px;

@@ -38,13 +38,11 @@ export default class PhotographerMediaCard {
             type="video/mp4">
     </video>
     <div class="container_title_like">
-      <div tabindex="9">
-        <p class="media_card_titleAndLikesArticle">${media.title}</p>
-      </div>
-      <div tabindex="9">
-        <span class="like">${media.likes}❤️</span>
-      </div>
-    </div>
+          <div>
+            <p class="media_card_titleAndLikesArticle">${media.title}</p>
+          </div>
+        <span class="like modal-trigger">${media.likes}❤️</span>
+    </div> 
     `;
 
     article.innerHTML = mediaCardInDOM;

@@ -7,8 +7,6 @@ import PhotographerMediaSlide from "../templates/PhotographerMediaSlide.js";
 import PhotographerCard from "../templates/PhotographerCard.js";
 import initModal from "../utils/contactForm.js";
 
-// import modalLike from "../utils/modalLike.js";
-
 /**
  * Classe représentant la gestion de la page du photographe sélectioné
  * avec son portfolio
@@ -32,7 +30,7 @@ class Photographer {
 
   /**
    * Initialise la page du photographe pour afficher les medias
-   * via la factory des medias du photographe
+   * via la factory des medias du photographe et ajoute tous les écouteurs d'évènements
    */
   async init() {
     this.displayPhotographerSelected();
@@ -41,6 +39,7 @@ class Photographer {
     await this.displayPhotographerMedias(arrayMediasID);
     this.addClickEventOnCards();
     this.addLikeEventOnCards();
+    this.addCloseEventAlertAlreadyLiked();
     this.addClickEventOnFilters();
     initModal();
   }
@@ -107,10 +106,20 @@ class Photographer {
    * Action de "liker" un media
    * @param {object} mediaToLike: élément du DOM représente le span pour liker un media
    */
+  //  let previousElement = null;
+
   addLike(mediaToLike) {
     if (mediaToLike.classList.contains("liked")) {
-      // modalLike();
-      alert("Vous avez déjà aimé ce contenu");
+      // j'affiche la modale
+      const modalLikeContainer = document.querySelector(
+        ".modal-like-container"
+      );
+      modalLikeContainer.classList.add("active");
+
+      // Empêcher le focus sur tous les enfants de body à part la modale
+      Array.from(document.body.children).forEach((child) => {
+        if (child !== modalLikeContainer) child.setAttribute("inert", true);
+      });
     } else {
       // j'incrémente les likes d'une image ou une vidéo
       mediaToLike.innerHTML = `${parseInt(mediaToLike.textContent) + 1}`;
@@ -147,6 +156,32 @@ class Photographer {
     );
     const totalLikes = document.querySelector(".totalLikes");
     totalLikes.innerHTML = `${sumOfTotalPhotographerLikes}`;
+  }
+
+  /**
+   * Fermeture de la modale qui informe que l'utilisateur a déjà aimé ce média
+   */
+  addCloseEventAlertAlreadyLiked() {
+    const modalContainer = document.querySelector(".modal-like-container");
+    const closeLikeModaleBtn = document.querySelector("#close-like-modal");
+    // écouteur évènement fermeture au clique
+    closeLikeModaleBtn.addEventListener("click", () => {
+      modalContainer.classList.remove("active");
+      // Supprimer la désactivation du focus sur tous les enfants de body à part la modale
+      Array.from(document.body.children).forEach((child) => {
+        if (child !== modalContainer) child.removeAttribute("inert");
+      });
+    });
+    // écouteur évènement fermeture via le clavier
+    closeLikeModaleBtn.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        modalContainer.classList.remove("active");
+        Array.from(document.body.children).forEach((child) => {
+          if (child !== modalContainer) child.removeAttribute("inert");
+        });
+        document.querySelector(".modalPriceAndLiked").focus();
+      }
+    });
   }
 
   /**
