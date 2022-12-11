@@ -1,28 +1,35 @@
 // Représente le dernier élément parcouru avant l'ouverture de la modale
-let previousActiveElement;
+// let previousActiveElement;
+let previousElement = null;
 
 /**
  * Permet d'afficher la modale de contact
  */
 export default function initModal() {
   const contactForm = document.querySelector(".openContactForm");
-  console.log("contactform", contactForm);
   if (contactForm) {
     contactForm.addEventListener("click", () => displayModal());
   }
-
   // const closeModalViaTab = document.querySelector(".imgCloseModal");
-  // closeModalViaTab.addEventListener("keydown", (e) => {
-  //   console.log("closemodalviatab", e);
-  //   if (e.key === "Enter") {
-  //     console.log("e", e);
-  //     closeModal();
+  // closeModalViaTab.addEventListener("keydown", (event) => {
+  //   if (event.keyCode === 13) {
+  //     const modal = document.getElementById("contact_modal");
+  //     modal.style.display = "none";
+  //     // annulation du filtre
+  //     const mainContentFilter = document.getElementById("main");
+  //     mainContentFilter.style.filter = "none";
+
+  //     Array.from(document.body.children).forEach((child) => {
+  //       if (child !== modal) child.removeAttribute("inert");
+  //     });
   //   }
   // });
 }
 
 export function displayModal() {
-  previousActiveElement = document.activeElement; // conserve le dernier élément parcouru avant ouverture dialog
+  previousElement = document.activeElement || document.body; // conserve le dernier élément parcouru avant ouverture dialog
+
+  // previousActiveElement = document.activeElement; // conserve le dernier élément parcouru avant ouverture dialog
   const photographerName = document.querySelector(
     ".photographer_title_profil"
   ).textContent;
@@ -76,11 +83,7 @@ if (closeModalContactForm) {
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
-  console.log("modal", modal);
-
   modal.style.display = "none";
-  console.log("modal2", modal);
-
   const main = document.getElementById("main");
   main.style.display = "block";
 
@@ -92,7 +95,24 @@ function closeModal() {
   Array.from(document.body.children).forEach((child) => {
     if (child !== modal) child.removeAttribute("inert");
   });
-
   // Retourner au dernier élément parcouru avant l'ouverture de la modale
-  previousActiveElement.focus();
+  // previousActiveElement.focus();
+  previousElement.focus();
+  previousElement = null;
 }
+
+const closeModalViaTab = document.querySelector(".imgCloseModal");
+closeModalViaTab.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    const modal = document.getElementById("contact_modal");
+    modal.style.display = "none";
+    // annulation du filtre
+    const mainContentFilter = document.getElementById("main");
+    mainContentFilter.style.filter = "none";
+
+    Array.from(document.body.children).forEach((child) => {
+      if (child !== modal) child.removeAttribute("inert");
+    });
+    document.getElementById("photographer_id").focus();
+  }
+});
