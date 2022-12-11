@@ -6,6 +6,9 @@ import photographerMediaFactory from "../factories/media.js";
 import PhotographerMediaSlide from "../templates/PhotographerMediaSlide.js";
 import PhotographerCard from "../templates/PhotographerCard.js";
 import initModal from "../utils/contactForm.js";
+
+// import modalLike from "../utils/modalLike.js";
+
 /**
  * Classe représentant la gestion de la page du photographe sélectioné
  * avec son portfolio
@@ -19,7 +22,6 @@ class Photographer {
     this.photographerId = new URL(location.href).searchParams.get("id");
     this.photographersApi = new PhotographersApi("./data/photographers.json");
     this.photographerDataMediasArray = [];
-    // this.currentSlides = 0;
   }
 
   async getMediasById(photographerId) {
@@ -86,9 +88,17 @@ class Photographer {
   addClickEventOnCards() {
     const mediaCards = Array.from(document.getElementsByClassName("media"));
     for (let i = 0; i < mediaCards?.length; i++) {
+      // ajout évènement click
       mediaCards[i].addEventListener("click", () => {
         displayLightBoxModal();
         this.displayMediaCarroussel(i);
+      });
+      // ajout évènement touche clavier "enter"
+      mediaCards[i].addEventListener("keydown", (event) => {
+        if (event.keyCode === 13) {
+          displayLightBoxModal();
+          this.displayMediaCarroussel(i);
+        }
       });
     }
   }
@@ -99,6 +109,7 @@ class Photographer {
    */
   addLike(mediaToLike) {
     if (mediaToLike.classList.contains("liked")) {
+      // modalLike();
       alert("Vous avez déjà aimé ce contenu");
     } else {
       // j'incrémente les likes d'une image ou une vidéo
@@ -170,7 +181,6 @@ class Photographer {
       }
     });
   }
-
   /**
    *
    * Affiche le carroussel qui fait défiler les medias
@@ -216,20 +226,17 @@ export function displayCurrentSlides(currentIndex) {
     if (currentIndex === counter) {
       slide.style.display = "block";
     }
-    // console.log("counter", counter);
   });
 }
 
 // Gestion du clique sur le bouton "précédent" du carroussel
 const prevButton = document.getElementById("slide-arrow-prev");
 prevButton.addEventListener("click", () => {
-  // console.log("this.currentSlides", this.currentSlides);
   if (currentSlides === 0) {
     const slides = document.querySelectorAll(".slide");
     currentSlides = slides.length - 1;
   } else {
     currentSlides--;
-    // console.log("currentSlides--", currentSlides);
   }
   displayCurrentSlides(currentSlides);
 });
@@ -238,12 +245,10 @@ prevButton.addEventListener("click", () => {
 const nextButton = document.getElementById("slide-arrow-next");
 nextButton.addEventListener("click", () => {
   const slides = document.querySelectorAll(".slide");
-  // console.log("this.currentSlides", this.currentSlides);
   if (currentSlides === slides.length - 1) {
     currentSlides = 0;
   } else {
     currentSlides++;
-    // console.log("currentSlides++", currentSlides);
   }
   displayCurrentSlides(currentSlides);
 });
