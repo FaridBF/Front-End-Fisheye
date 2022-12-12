@@ -1,3 +1,4 @@
+/*Modal Like */
 *,
 ::before,
 ::after {
@@ -80,6 +81,10 @@ body {
 .modal-like p {
   line-height: 1.4;
   margin-bottom: 5px;
+}
+
+i.fa-solid.fa-heart {
+  margin-left: 3px;
 }
 
 p#dialogDesc {

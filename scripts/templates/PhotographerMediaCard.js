@@ -41,7 +41,7 @@ export default class PhotographerMediaCard {
           <div>
             <p class="media_card_titleAndLikesArticle">${media.title}</p>
           </div>
-        <span class="like modal-trigger">${media.likes}❤️</span>
+        <span class="like modal-trigger">${media.likes}<i class="fa-solid fa-heart"></i></span>
     </div> 
     `;
 
@@ -78,7 +78,7 @@ export default class PhotographerMediaCard {
         <p class="media_card_titleAndLikesArticle">${media.title}</p>
       </div>
       <div>
-        <span tabindex="9" aria-describedby="like" class="like">${media.likes}❤️</span>
+        <span tabindex="9" aria-describedby="like" class="like">${media.likes}<i class="fa-solid fa-heart"></i></span>
       </div>
     </div>
     `;

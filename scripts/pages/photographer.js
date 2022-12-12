@@ -238,9 +238,6 @@ class Photographer {
       this.slidesContainer.appendChild(mediaSlideInDOM);
     });
     currentSlides = i;
-    console.log(" currentSlides", currentSlides);
-    console.log(" i", i);
-
     displayCurrentSlides(i);
   }
 }

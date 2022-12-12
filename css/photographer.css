@@ -1,3 +1,4 @@
+/*Header */
 #header {
   margin-top: 10px;
 }
@@ -54,6 +55,7 @@
   color: #911c1c;
 }
 
+/*Formulaire de contact */
 .openContactForm {
   font-size: 20px;
   font-weight: bold;
@@ -279,8 +281,9 @@ img.img_profil {
 
 span.like {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   color: #901c1c;
+  font-size: 18px;
 }
 
 .liked::after {
@@ -289,7 +292,6 @@ span.like {
 }
 
 /*select de tri avec 3 filtres */
-
 label {
   font-size: 1rem;
   padding-right: 10px;
