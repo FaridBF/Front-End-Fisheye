@@ -1,3 +1,7 @@
+#header {
+  margin-top: 10px;
+}
+
 #contact_modal {
   display: none;
 }
@@ -74,6 +78,10 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+button.submit_form {
+  margin-top: 20px;
 }
 
 fieldset {
@@ -195,6 +203,7 @@ img.img_profil {
 
 /*Media */
 .media-card-container {
+  padding-bottom: 85px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -236,14 +245,15 @@ img.img_profil {
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
+  white-space: nowrap;
   line-height: 31px;
   color: #911c1c;
+  width: 250px;
   margin: 0;
 }
 
 /*modalPriceAndLiked */
-
 .modalPriceAndLiked {
   background: #db8876;
   border-radius: 5px;
@@ -269,6 +279,8 @@ img.img_profil {
 
 span.like {
   cursor: pointer;
+  font-weight: bold;
+  color: #901c1c;
 }
 
 .liked::after {
