@@ -249,7 +249,6 @@ let currentSlides = 0;
  * @param {number} currentIndex
  */
 export function displayCurrentSlides(currentIndex) {
-  console.log("currentIndex", currentIndex);
   // récupère les slides du DOM
   let slides = document.querySelectorAll(".slide");
   // boucler sur les slides
